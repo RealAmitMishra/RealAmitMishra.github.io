@@ -11,46 +11,59 @@
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
+  <!-- Primary SEO Meta Tags -->
   <title>Amit Mishra | Healthcare Business Development & Utilization Review Expert</title>
   <meta name="description" content="Amit Mishra - A forward-thinking expert in healthcare business development, revenue optimization, and strategic growth.">
   <meta name="keywords" content="Amit Mishra, Healthcare Innovation, Business Development, Utilization Review, Behavioral Health, Revenue Optimization, Healthcare Consulting, Keystone Ledger">
   <meta name="author" content="Amit Mishra">
-  <link rel="canonical" href="index.html" />
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://amit-mishra-portfolio.netlify.app/" />
 
-  <!-- Open Graph -->
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
   <meta property="og:title" content="Amit Mishra | Healthcare Business Development & Utilization Review Expert">
-  <meta property="og:image" content="https://lh3.googleusercontent.com/pw/AP1GczM7M_f5tFRo0mUcKNqzN_smlLmBq5lRzk0Lewvu_7u7suTGeZdhJRqeMTb_4KIc6loDheIW64p5cXX_YbWZzpjlh4sVsfLA9ZcxsNCmXAGfGRDN6grw=w1920-h1080">
-  <meta property="og:description" content="Amit Mishra - Healthcare business development expert.">
+  <meta property="og:description" content="A forward-thinking expert in healthcare business development, revenue optimization, and strategic growth.">
+  <meta property="og:image" content="https://i.postimg.cc/VNLD9j3T/IMG-4601.jpg"> <!-- Updated Hero Image -->
+  <meta property="og:image:alt" content="A professional headshot of Amit Mishra">
+  <meta property="og:site_name" content="Amit Mishra Portfolio">
+  <meta property="og:locale" content="en_US">
 
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Amit Mishra | Healthcare Business Development & Utilization Review Expert">
-  <meta name="twitter:image" content="https://lh3.googleusercontent.com/pw/AP1GczM7M_f5tFRo0mUcKNqzN_smlLmBq5lRzk0Lewvu_7u7suTGeZdhJRqeMTb_4KIc6loDheIW64p5cXX_YbWZzpjlh4sVsfLA9ZcxsNCmXAGfGRDN6grw=w1920-h1080">
-  <meta name="twitter:description" content="Amit Mishra - Healthcare business development expert.">
+  <meta name="twitter:description" content="A forward-thinking expert in healthcare business development, revenue optimization, and strategic growth.">
+  <meta name="twitter:image" content="https://i.postimg.cc/VNLD9j3T/IMG-4601.jpg"> <!-- Updated Hero Image -->
+  <meta name="twitter:image:alt" content="A professional headshot of Amit Mishra">
 
-  <!-- Tailwind CSS -->
-  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Tailwind CSS --><script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = { darkMode: 'class' }
   </script>
 
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- Font Awesome --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-  <!-- Google Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <!-- Google Fonts --><link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  
-  <!-- Chart.js (Optional, script will handle if it's missing) -->
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-  <!-- Critical theme bootstrap (prevents flash) -->
+  <!-- Chart.js --><script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  
+  <!-- Animate on Scroll (AOS) --><link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+  <!-- === FIX: Critical theme bootstrap (prevents flash, checks system settings) === -->
   <script>
     (function () {
       try {
-        const isDark = localStorage.getItem('darkMode') === 'true';
-        document.documentElement.classList.toggle('dark', isDark);
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme) {
+          document.documentElement.classList.toggle('dark', savedTheme === 'true');
+        } else {
+          // No saved theme, check system preference
+          const userPrefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+          document.documentElement.classList.toggle('dark', userPrefersDark);
+          localStorage.setItem('theme', userPrefersDark ? 'true' : 'false'); // Save the initial system pref
+        }
       } catch {}
     })();
   </script>
@@ -61,6 +74,7 @@
     section[id] { scroll-margin-top: 80px; }
     .hidden { display: none !important; }
 
+    /* Custom animations */
     @keyframes fade-in-up { from { opacity:0; transform: translateY(20px);} to { opacity:1; transform: translateY(0);} }
     .animate-fade-in-up { animation: fade-in-up .5s ease-out forwards; }
     @keyframes fade-in { from { opacity:0; } to { opacity:1; } }
@@ -71,21 +85,55 @@
     .dark .loader{ border-color:#4b5563; border-top-color:#60a5fa; }
     @keyframes spin { to { transform: rotate(360deg);} }
 
-    /* prose invert helper */
-    .dark .prose-invert{ --tw-prose-body:#d1d5db; --tw-prose-headings:#fff; --tw-prose-links:#60a5fa; }
+    /* Modal styles */
+    .modal-backdrop { animation: fade-in .2s ease-out forwards; }
+    .modal-content { animation: fade-in-up .3s ease-out forwards; }
     
-    /* Styles for new modals/lightbox from your script */
-    #lightbox { background-color: rgba(0,0,0,0.8); backdrop-filter: blur(4px); }
-    #lightbox-img { max-height: 90vh; max-width: 90vw; }
-    #publication-modal, #email-modal { background-color: rgba(0,0,0,0.6); backdrop-filter: blur(4px); }
+    /* Styles for generated article content in modal */
+    #modal-article-content h3 {
+      font-size: 1.5rem; /* 24px */
+      line-height: 2rem; /* 32px */
+      font-weight: 700;
+      color: #1f2937; /* text-gray-800 */
+      margin-bottom: 1rem; /* mb-4 */
+    }
+    .dark #modal-article-content h3 {
+      color: #f9fafb; /* dark:text-gray-50 */
+    }
+    #modal-article-content p {
+      margin-bottom: 1rem; /* mb-4 */
+      line-height: 1.625; /* leading-relaxed */
+      font-size: 1.125rem; /* text-lg */
+    }
+    #modal-article-content img {
+      width: 100%;
+      max-height: 400px;
+      object-fit: cover;
+      border-radius: 0.5rem; /* rounded-lg */
+      margin-bottom: 1.5rem; /* mb-6 */
+    }
     
+    /* AI Chatbot styles */
+    .chat-bubble-model {
+      background-color: #f3f4f6; /* bg-gray-100 */
+      color: #1f2937; /* text-gray-800 */
+      align-self: flex-start;
+    }
+    .dark .chat-bubble-model {
+      background-color: #374151; /* dark:bg-gray-700 */
+      color: #f9fafb; /* dark:text-gray-100 */
+    }
+    .chat-bubble-user {
+      background-color: #3b82f6; /* bg-blue-600 */
+      color: #ffffff; /* text-white */
+      align-self: flex-end;
+    }
   </style>
 </head>
 
 <body class="bg-white text-gray-900 dark:bg-gray-900 dark:text-gray-300">
   <div id="root">
-    <!-- NAV -->
-    <nav id="navbar" class="fixed w-full z-50 transition-all duration-300 bg-transparent">
+    <!-- NAV --><nav id="navbar" class="fixed w-full z-50 transition-all duration-300 bg-transparent">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between h-20 items-center">
           <a href="#home" class="text-2xl font-bold bg-gradient-to-r from-blue-600 to-teal-500 bg-clip-text text-transparent">Amit Mishra</a>
@@ -93,7 +141,8 @@
             <a href="#about" class="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 font-medium">About</a>
             <a href="#expertise" class="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 font-medium">Expertise</a>
             <a href="#insights" class="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 font-medium">Insights</a>
-            <a href="#keystone-ledger" class="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 font-medium">Keystone Ledger</a>
+            <!-- === LINK UPDATED === -->
+            <a href="#projects" class="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 font-medium">Projects</a>
             <a href="#achievements" class="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 font-medium">Results</a>
             <a href="#services" class="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 font-medium">Services</a>
             <a href="#publications" class="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 font-medium">Features</a>
@@ -116,13 +165,13 @@
       </div>
     </nav>
 
-    <!-- MOBILE MENU -->
-    <div id="mobile-menu" class="fixed inset-0 z-40 bg-white dark:bg-gray-900 transform translate-x-full transition-transform duration-300 ease-in-out md:hidden">
+    <!-- MOBILE MENU --><div id="mobile-menu" class="fixed inset-0 z-40 bg-white dark:bg-gray-900 transform translate-x-full transition-transform duration-300 ease-in-out md:hidden">
       <div class="flex flex-col items-center justify-center h-full pt-20">
         <a href="#about" class="mobile-menu-link py-4 text-2xl text-gray-800 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400 font-semibold">About</a>
         <a href="#expertise" class="mobile-menu-link py-4 text-2xl text-gray-800 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400 font-semibold">Expertise</a>
         <a href="#insights" class="mobile-menu-link py-4 text-2xl text-gray-800 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400 font-semibold">Insights</a>
-        <a href="#keystone-ledger" class="mobile-menu-link py-4 text-2xl text-gray-800 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400 font-semibold">Keystone Ledger</a>
+        <!-- === LINK UPDATED === -->
+        <a href="#projects" class="mobile-menu-link py-4 text-2xl text-gray-800 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400 font-semibold">Projects</a>
         <a href="#achievements" class="mobile-menu-link py-4 text-2xl text-gray-800 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400 font-semibold">Results</a>
         <a href="#services" class="mobile-menu-link py-4 text-2xl text-gray-800 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400 font-semibold">Services</a>
         <a href="#publications" class="mobile-menu-link py-4 text-2xl text-gray-800 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400 font-semibold">Features</a>
@@ -133,139 +182,202 @@
     </div>
 
     <main>
-      <!-- HERO -->
+      <!-- === HERO UPDATED === -->
       <section class="min-h-screen flex items-center bg-gray-50 dark:bg-gray-900 pt-20" id="home">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div class="grid md:grid-cols-2 gap-12 items-center">
-            <div>
+            <div data-aos="fade-right">
               <p class="text-blue-600 dark:text-blue-400 mb-2 text-lg font-semibold">Healthcare Business Development</p>
               <h1 class="text-4xl md:text-6xl font-bold mb-4 text-gray-900 dark:text-white leading-tight">Innovating Healthcare.<br/>Driving Growth.</h1>
               <p class="text-xl mb-8 text-gray-600 dark:text-gray-400 max-w-lg">A seasoned expert in optimizing revenue cycles and fostering strategic partnerships within the behavioral health sector.</p>
               <div class="flex flex-col sm:flex-row gap-4">
-                <a href="#contact" class="bg-blue-600 text-white px-8 py-3 rounded-lg font-semibold text-center hover:bg-blue-700 hover:scale-105 transition transform">
+                <a href="#contact" class="bg-blue-600 text-white px-8 py-3 rounded-lg font-semibold text-center transition-all duration-300 hover:bg-blue-700 hover:scale-105">
                   <i class="fas fa-paper-plane mr-2"></i>Let's Connect
                 </a>
-                <a href="amit-mishra-resume.pdf" download="Amit_Mishra_Resume.pdf" class="border-2 border-blue-600 text-blue-600 px-8 py-3 rounded-lg font-semibold text-center hover:bg-blue-600 hover:text-white dark:border-blue-500 dark:text-blue-500 dark:hover:bg-blue-500 dark:hover:text-white hover:scale-105 transition transform">
+                <!-- === FIX: Resume Download Button === -->
+                <a href="Resume.pdf" download="Amit_Mishra_Resume.pdf" class="border-2 border-blue-600 text-blue-600 px-8 py-3 rounded-lg font-semibold text-center transition-all duration-300 hover:bg-blue-600 hover:text-white dark:border-blue-500 dark:text-blue-500 dark:hover:bg-blue-500 dark:hover:text-white hover:scale-105">
                   <i class="fas fa-download mr-2"></i>Download Resume
                 </a>
               </div>
             </div>
-            <div class="text-center">
+            <div class="text-center" data-aos="fade-left" data-aos-delay="200">
               <div class="relative group">
-                <img src="https://lh3.googleusercontent.com/pw/AP1GczM7M_f5tFRo0mUcKNqzN_smlLmBq5lRzk0Lewvu_7u7suTGeZdhJRqeMTb_4KIc6loDheIW64p5cXX_YbWZzpjlh4sVsfLA9ZcxsNCmXAGfGRDN6grw=w1920-h1080" alt="Amit Mishra Profile" class="w-full max-w-sm mx-auto h-auto rounded-full object-cover relative z-10 shadow-2xl" onerror="this.src='https://placehold.co/400x400/3B82F6/FFFFFF?text=Amit+Mishra'"/>
+                <img src="https://i.postimg.cc/VNLD9j3T/IMG-4601.jpg" alt="Amit Mishra Profile" class="w-full max-w-sm mx-auto h-auto rounded-full object-cover relative z-10 shadow-2xl" onerror="this.src='https://placehold.co/400x400/3B82F6/FFFFFF?text=Amit+Mishra'"/>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      <!-- ABOUT -->
+      <!-- === ABOUT UPDATED === -->
       <section id="about" class="py-20 dark:bg-gray-800">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div class="text-center mb-16">
+          <div class="text-center mb-16" data-aos="fade-up">
             <h2 class="text-4xl font-bold text-gray-900 dark:text-white mb-4">
               <span class="bg-gradient-to-r from-blue-600 to-teal-500 bg-clip-text text-transparent">About Me</span>
             </h2>
             <p class="text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">A results-driven healthcare executive with a proven track record of transforming behavioral health organizations through strategic business development and operational excellence.</p>
           </div>
           <div class="grid md:grid-cols-3 gap-8">
-            <div class="bg-white dark:bg-gray-700 border border-gray-200 dark:border-gray-600 p-8 rounded-xl text-center hover:-translate-y-2 hover:shadow-xl transition">
+            <div class="bg-white dark:bg-gray-700 border border-gray-200 dark:border-gray-600 p-8 rounded-xl text-center hover:-translate-y-2 hover:shadow-xl transition" data-aos="fade-up" data-aos-delay="100">
               <i class="fas fa-brain text-blue-500 text-4xl mb-4"></i>
               <h3 class="text-xl font-bold text-gray-800 dark:text-gray-200 mb-4">Behavioral Health Specialist</h3>
-              <p class="text-gray-600 dark:text-gray-400">8+ years of dedicated experience, from direct client care to executive leadership.</p>
+              <p class="text-gray-600 dark:text-gray-400">8+ years of dedicated experience, from direct client care to executive leadership, with a deep understanding of treatment modalities and recovery principles.</p>
             </div>
-            <div class="bg-white dark:bg-gray-700 border border-gray-200 dark:border-gray-600 p-8 rounded-xl text-center hover:-translate-y-2 hover:shadow-xl transition">
+            <div class="bg-white dark:bg-gray-700 border border-gray-200 dark:border-gray-600 p-8 rounded-xl text-center hover:-translate-y-2 hover:shadow-xl transition" data-aos="fade-up" data-aos-delay="200">
               <i class="fas fa-gem text-teal-500 text-4xl mb-4"></i>
               <h3 class="text-xl font-bold text-gray-800 dark:text-gray-200 mb-4">High-Net-Worth Expertise</h3>
-              <p class="text-gray-600 dark:text-gray-400">Mastery in navigating complex financial arrangements for affluent clients.</p>
+              <p class="text-gray-600 dark:text-gray-400">Mastery in navigating complex financial arrangements for affluent clients, specializing in private-pay models and out-of-network benefits.</p>
             </div>
-            <div class="bg-white dark:bg-gray-700 border border-gray-200 dark:border-gray-600 p-8 rounded-xl text-center hover:-translate-y-2 hover:shadow-xl transition">
+            <div class="bg-white dark:bg-gray-700 border border-gray-200 dark:border-gray-600 p-8 rounded-xl text-center hover:-translate-y-2 hover:shadow-xl transition" data-aos="fade-up" data-aos-delay="300">
               <i class="fas fa-chart-line text-blue-500 text-4xl mb-4"></i>
               <h3 class="text-xl font-bold text-gray-800 dark:text-gray-200 mb-4">Revenue Growth Expert</h3>
-              <p class="text-gray-600 dark:text-gray-400">Consistently delivered record-breaking financial performance.</p>
+              <p class="text-gray-600 dark:text-gray-400">Consistently delivered record-breaking financial performance, generating over $700,000 in monthly revenue across 8 consecutive fiscal quarters.</p>
             </div>
           </div>
         </div>
       </section>
 
-      <!-- EXPERTISE -->
-      <section id="expertise" class="py-20 bg-gray-50 dark:bg-gray-900">
+      <!-- EXPERTISE --><section id="expertise" class="py-20 bg-gray-50 dark:bg-gray-900">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div class="text-center mb-16">
+          <div class="text-center mb-16" data-aos="fade-up">
             <h2 class="text-4xl font-bold text-gray-900 dark:text-white mb-4">
               <span class="bg-gradient-to-r from-blue-600 to-teal-500 bg-clip-text text-transparent">Core Expertise</span>
             </h2>
             <p class="text-xl text-gray-600 dark:text-gray-400">A comprehensive skill set driving organizational success.</p>
           </div>
           <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
-            <div class="text-center"><div class="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6 h-full flex flex-col items-center justify-center"><i class="fas fa-handshake text-5xl mb-4 text-blue-500"></i><h3 class="font-bold text-gray-800 dark:text-gray-200">Business Development</h3></div></div>
-            <div class="text-center"><div class="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6 h-full flex flex-col items-center justify-center"><i class="fas fa-file-invoice-dollar text-5xl mb-4 text-teal-500"></i><h3 class="font-bold text-gray-800 dark:text-gray-200">Utilization Review</h3></div></div>
-            <div class="text-center"><div class="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6 h-full flex flex-col items-center justify-center"><i class="fas fa-dollar-sign text-5xl mb-4 text-blue-500"></i><h3 class="font-bold text-gray-800 dark:text-gray-200">Financial Negotiations</h3></div></div>
-            <div class="text-center"><div class="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6 h-full flex flex-col items-center justify-center"><i class="fas fa-network-wired text-5xl mb-4 text-teal-500"></i><h3 class="font-bold text-gray-800 dark:text-gray-200">Referral Networks</h3></div></div>
+            <div class="text-center" data-aos="zoom-in" data-aos-delay="0"><div class="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6 h-full flex flex-col items-center justify-center hover:shadow-lg transition"><i class="fas fa-handshake text-5xl mb-4 text-blue-500"></i><h3 class="font-bold text-gray-800 dark:text-gray-200">Business Development</h3></div></div>
+            <div class="text-center" data-aos="zoom-in" data-aos-delay="100"><div class="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6 h-full flex flex-col items-center justify-center hover:shadow-lg transition"><i class="fas fa-file-invoice-dollar text-5xl mb-4 text-teal-500"></i><h3 class="font-bold text-gray-800 dark:text-gray-200">Utilization Review</h3></div></div>
+            <div class="text-center" data-aos="zoom-in" data-aos-delay="200"><div class="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6 h-full flex flex-col items-center justify-center hover:shadow-lg transition"><i class="fas fa-dollar-sign text-5xl mb-4 text-blue-500"></i><h3 class="font-bold text-gray-800 dark:text-gray-200">Financial Negotiations</h3></div></div>
+            <div class="text-center" data-aos="zoom-in" data-aos-delay="300"><div class="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6 h-full flex flex-col items-center justify-center hover:shadow-lg transition"><i class="fas fa-network-wired text-5xl mb-4 text-teal-500"></i><h3 class="font-bold text-gray-800 dark:text-gray-200">Referral Networks</h3></div></div>
           </div>
         </div>
       </section>
 
-      <!-- INSIGHTS -->
-      <section id="insights" class="py-20 dark:bg-gray-800">
-        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <!-- INSIGHTS --><section id="insights" class="py-20 dark:bg-gray-800">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center" data-aos="fade-up">
           <h2 class="text-4xl font-bold text-gray-900 dark:text-white mb-4">
             <span class="bg-gradient-to-r from-blue-600 to-teal-500 bg-clip-text text-transparent">Future of Healthcare</span>
           </h2>
-          <p class="text-xl text-gray-600 dark:text-gray-400 mb-8 max-w-3xl mx-auto">Staying ahead of the curve is critical. This section will soon generate up-to-date insights on behavioral healthcare trends.</p>
-          <button id="generate-insights-btn" class="bg-blue-600 text-white px-8 py-3 rounded-lg font-semibold text-lg inline-flex items-center justify-center gap-2 hover:bg-blue-700 hover:scale-105 transition">
+          <p class="text-xl text-gray-600 dark:text-gray-400 mb-8 max-w-3xl mx-auto">This section will soon use AI to generate up-to-date insights on behavioral healthcare trends. For now, a modal will show a "coming soon" message.</p>
+          <button id="generate-insights-btn" class="bg-blue-600 text-white px-8 py-3 rounded-lg font-semibold text-lg inline-flex items-center justify-center gap-2 hover:bg-blue-700 hover:scale-105">
             <span class="btn-icon">✨</span>
             <span class="btn-text">Generate Industry Insights</span>
           </button>
-          
-          <!-- Container for results (hidden by default) -->
-          <div id="insights-result-container" class="mt-8 text-left bg-white dark:bg-gray-900 p-8 rounded-xl shadow-lg border border-gray-200 dark:border-gray-700 min-h-[0] hidden">
-            <div id="insights-loading" class="hidden items-center justify-center">
-              <div class="loader"></div>
-              <p class="ml-4 text-lg text-gray-600 dark:text-gray-400">Generating latest insights...</p>
-            </div>
-            <div id="insights-content" class="prose dark:prose-invert max-w-none"></div>
-            <div id="insights-error" class="text-red-500 text-center"></div>
-          </div>
         </div>
       </section>
 
-      <!-- KEYSTONE LEDGER -->
-      <section id="keystone-ledger" class="py-20 bg-gray-50 dark:bg-gray-900">
+      <!-- === PROJECTS (KEYSTONE) UPDATED === -->
+      <section id="projects" class="py-20 bg-gray-50 dark:bg-gray-900">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div class="text-center mb-16">
-            <h2 class="text-4xl font-bold text-gray-900 dark:text-white mb-4">
-              <span class="bg-gradient-to-r from-teal-500 to-green-600 bg-clip-text text-transparent">Keystone Ledger</span>
-            </h2>
-            <p class="text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">Empowering small businesses with clear, concise, and reliable bookkeeping services.</p>
-          </div>
-          <div class="flex justify-center">
-            <div class="w-full max-w-lg bg-white dark:bg-gray-800 p-8 rounded-xl shadow-lg text-center border border-gray-200 dark:border-gray-700">
-              <i class="fas fa-calculator text-6xl text-teal-500 mb-4"></i>
-              <h3 class="text-2xl font-semibold text-gray-800 dark:text-gray-200 mb-4">Bookkeeping Solutions</h3>
-              <p class="text-gray-700 dark:text-gray-300 mb-6">Accurate financial records are the cornerstone of any successful business. Keystone Ledger provides tailored bookkeeping services to keep your finances organized and compliant.</p>
-              <p class="text-sm text-gray-500 dark:text-gray-400">(Website and contact information coming soon)</p>
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-4xl font-bold text-gray-900 dark:text-white mb-4">
+                    <span class="bg-gradient-to-r from-blue-600 to-teal-500 bg-clip-text text-transparent">Flagship Projects</span>
+                </h2>
+                <p class="text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">A selection of ventures showcasing my expertise in system design, financial modeling, and business development.</p>
             </div>
-          </div>
-        </div>
+
+            <div class="space-y-24">
+                <!-- Project 1: Keystone Ledger -->
+                <div class="grid lg:grid-cols-5 gap-12 items-start">
+                    <div class="lg:col-span-2" data-aos="fade-right">
+                         <h3 class="text-3xl font-bold text-gray-800 dark:text-gray-200 mb-4">Keystone Ledger</h3>
+                        <p class="text-gray-600 dark:text-gray-400 mb-6">A professional-grade accounting system, designed to transform complex financial data into actionable insights. It elevates the standard spreadsheet into a sophisticated, beautifully branded financial management platform.</p>
+                        
+                        <div class="my-8 rounded-xl overflow-hidden shadow-lg" data-aos="fade-up" data-aos-delay="100">
+                            <div class="aspect-video">
+                                <!-- === FIX: YouTube Referrer Policy Added === -->
+                                <iframe 
+                                    class="w-full h-full"
+                                    src="https://www.youtube.com/embed/wswkrEFEVV8?si=1P2RwBQoT4fYc0UC" 
+                                    title="YouTube video player for Keystone Ledger Professional" 
+                                    frameborder="0" 
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                                    referrerpolicy="strict-origin-when-cross-origin" 
+                                    allowfullscreen>
+                                </iframe>
+                            </div>
+                        </div>
+
+                        <h4 class="text-xl font-bold text-gray-800 dark:text-gray-200 mb-4 mt-8">Core Features</h4>
+                        <ul class="space-y-4 text-gray-600 dark:text-gray-400">
+                           <li class="flex items-start"><i class="fas fa-tachometer-alt text-[#4A6741] mt-1 mr-3"></i><span><strong>Real-Time Dashboard:</strong> Executive KPI tracking with visual status indicators.</span></li>
+                           <li class="flex items-start"><i class="fas fa-file-invoice-dollar text-[#4A6741] mt-1 mr-3"></i><span><strong>Automated Statements:</strong> Instantly generate Income Statements, Balance Sheets, and more.</span></li>
+                           <li class="flex items-start"><i class="fas fa-calculator text-[#4A6741] mt-1 mr-3"></i><span><strong>Double-Entry System:</strong> Professional, validated transaction recording for accuracy.</span></li>
+                           <li class="flex items-start"><i class="fas fa-palette text-[#4A6741] mt-1 mr-3"></i><span><strong>Sophisticated Branding:</strong> A clean, professional interface designed to impress investors and lenders.</span></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="lg:col-span-3" data-aos="fade-left" data-aos-delay="200">
+                        <div class="bg-white dark:bg-gray-800 rounded-xl shadow-2xl border border-gray-200 dark:border-gray-700">
+                             <div class="p-4 border-b border-gray-200 dark:border-gray-700">
+                               <div class="flex items-center justify-between">
+                                 <h3 class="font-bold text-lg text-[#2C3E50] dark:text-white">Keystone Ledger Professional 2025</h3>
+                                 <div class="flex items-center gap-2">
+                                     <span class="w-3 h-3 bg-red-500 rounded-full"></span>
+                                     <span class="w-3 h-3 bg-yellow-500 rounded-full"></span>
+                                     <span class="w-3 h-3 bg-green-500 rounded-full"></span>
+                                 </div>
+                               </div>
+                            </div>
+                            <div class="p-4">
+                                <div id="ledger-tabs-container" class="flex flex-wrap gap-2 mb-4">
+                                    <!-- Tab buttons injected by JS -->
+                                </div>
+                                <div id="ledger-content-container" class="p-4 bg-gray-50 dark:bg-gray-900 rounded-lg min-h-[300px]">
+                                    <!-- Tab content injected by JS -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 2: The Vending Machine Blueprint -->
+                <div class="grid lg:grid-cols-5 gap-12 items-center">
+                    <div class="lg:col-span-2" data-aos="fade-right">
+                       <div class="rounded-xl overflow-hidden shadow-2xl border-4 border-white dark:border-gray-700 transform hover:scale-105 transition-transform duration-300">
+                          <img src="https://lh3.googleusercontent.com/pw/AP1GczNvTV8ofgBpuRhh4cakJIxpEP2nIKR3Qx6HwB_YvUXyTSvfSEa3vAYoPtmCqnWsVD7nrf1uXqVn2nk37ntxmfbHN3ujq5NRQHAiOPrjL5upO8naJrhc=w1920-h1080" alt="The Vending Machine Blueprint Cover" class="w-full h-auto object-cover" />
+                       </div>
+                    </div>
+                    <div class="lg:col-span-3" data-aos="fade-left">
+                        <h3 class="text-3xl font-bold text-gray-800 dark:text-gray-200 mb-4">The Vending Machine Blueprint</h3>
+                        <p class="text-gray-600 dark:text-gray-400 mb-6">A comprehensive digital course and e-book designed to guide entrepreneurs through every stage of building and scaling a profitable vending machine business. This blueprint demystifies the industry, transforming a simple side hustle into a scalable, data-driven retail enterprise.</p>
+
+                        <h4 class="text-xl font-bold text-gray-800 dark:text-gray-200 mb-4 mt-8">Course Highlights</h4>
+                        <ul class="space-y-4 text-gray-600 dark:text-gray-400">
+                           <li class="flex items-start"><i class="fas fa-map-marked-alt text-blue-500 mt-1 mr-3"></i><span><strong>The 4 Pillars of Success:</strong> Master location, product, technology, and efficiency.</span></li>
+                           <li class="flex items-start"><i class="fas fa-cash-register text-teal-500 mt-1 mr-3"></i><span><strong>Financial Roadmaps:</strong> Detailed startup budgets and profitability calculators.</span></li>
+                           <li class="flex items-start"><i class="fas fa-search-location text-blue-500 mt-1 mr-3"></i><span><strong>Location Scouting:</strong> Proven strategies to find and secure high-traffic locations.</span></li>
+                           <li class="flex items-start"><i class="fas fa-cogs text-teal-500 mt-1 mr-3"></i><span><strong>Tech Integration:</strong> Leverage cashless systems and VMS for massive efficiency gains.</span></li>
+                        </ul>
+                        <!-- === FIX: Removed extra button, added Amazon button === -->
+                        <a href="https://www.amazon.com/dp/B0FXH6KP8Z" target="_blank" rel="noopener noreferrer" class="mt-8 inline-block bg-yellow-500 text-black px-8 py-3 rounded-lg font-semibold text-center transition-all duration-300 hover:bg-yellow-600 hover:scale-105">
+                            <i class="fab fa-amazon mr-2"></i>Buy E-Book on Amazon
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
       </section>
 
-      <!-- ACHIEVEMENTS -->
+      <!-- === ACHIEVEMENTS UPDATED === -->
       <section id="achievements" class="py-20 dark:bg-gray-800">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div class="text-center mb-16">
+          <div class="text-center mb-16" data-aos="fade-up">
             <h2 class="text-4xl font-bold text-gray-900 dark:text-white mb-4">
               <span class="bg-gradient-to-r from-blue-600 to-teal-500 bg-clip-text text-transparent">Proven Results</span>
             </h2>
             <p class="text-xl text-gray-600 dark:text-gray-400">Exceptional performance metrics that drive organizational success.</p>
           </div>
           <div class="grid md:grid-cols-2 gap-12 items-center">
-            <div>
+            <div data-aos="fade-right">
               <div class="bg-white dark:bg-gray-700 p-4 rounded-xl shadow-lg">
-                <canvas id="revenueChart"></canvas>
+                <!-- === FIX: Canvas ID updated === -->
+                <canvas id="revenueChartCanvas"></canvas>
               </div>
             </div>
-            <div class="space-y-8">
+            <div class="space-y-8" data-aos="fade-left">
               <div class="bg-white dark:bg-gray-700 p-6 rounded-xl shadow-lg flex items-center"><i class="fas fa-trophy text-yellow-500 text-3xl mr-4"></i><div><h3 class="text-lg font-bold text-gray-800 dark:text-gray-200">Employee of the Year 2023</h3><p class="text-gray-600 dark:text-gray-400">Recognized for outstanding leadership.</p></div></div>
               <div class="bg-white dark:bg-gray-700 p-6 rounded-xl shadow-lg flex items-center"><i class="fas fa-medal text-gray-500 text-3xl mr-4"></i><div><h3 class="text-lg font-bold text-gray-800 dark:text-gray-200">4x Employee of the Month</h3><p class="text-gray-600 dark:text-gray-400">Consistent recognition for contributions.</p></div></div>
             </div>
@@ -273,25 +385,25 @@
         </div>
       </section>
 
-      <!-- SERVICES -->
+      <!-- === SERVICES UPDATED === -->
       <section id="services" class="py-20 bg-gray-50 dark:bg-gray-900">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div class="grid lg:grid-cols-2 gap-12 items-center">
-            <div>
+            <div data-aos="fade-right">
               <span class="text-blue-600 dark:text-blue-400 text-sm font-semibold uppercase tracking-wider">Professional Service</span>
               <h2 class="text-4xl font-bold text-gray-900 dark:text-white my-4">Insurance Billing & Claims Advocacy</h2>
               <p class="text-lg text-gray-600 dark:text-gray-400 mb-6">Navigating the complexities of insurance claims can be daunting. With my expertise, I fight for unpaid and underpaid claims to ensure you receive the reimbursement you're entitled to. I advocate on behalf of both healthcare facilities and individuals, turning denials into approvals and maximizing revenue.</p>
               <h4 class="text-xl font-bold text-gray-800 dark:text-gray-200 mb-4">Why Partner With Me?</h4>
               <ul class="space-y-4 text-gray-600 dark:text-gray-400">
-                <li class="flex items-start"><i class="fas fa-check-circle text-green-500 mt-1 mr-3"></i><span><strong>Proven Results:</strong> Track record of success.</span></li>
-                <li class="flex items-start"><i class="fas fa-check-circle text-green-500 mt-1 mr-3"></i><span><strong>Industry Expertise:</strong> Deep knowledge of policies.</span></li>
-                <li class="flex items-start"><i class="fas fa-check-circle text-green-500 mt-1 mr-3"></i><span><strong>Dedicated Advocacy:</strong> Relentless approach.</span></li>
+                <li class="flex items-start"><i class="fas fa-check-circle text-green-500 mt-1 mr-3"></i><span><strong>Proven Results:</strong> A track record of successfully overturning denied claims and recovering significant revenue.</span></li>
+                <li class="flex items-start"><i class="fas fa-check-circle text-green-500 mt-1 mr-3"></i><span><strong>Industry Expertise:</strong> Deep knowledge of payer policies, billing codes, and the appeals process within the behavioral health sector.</span></li>
+                <li class="flex items-start"><i class="fas fa-check-circle text-green-500 mt-1 mr-3"></i><span><strong>Dedicated Advocacy:</strong> A relentless approach to ensure fair and timely payment for the services you provide.</span></li>
               </ul>
-              <a href="https://www.fiverr.com/s/9v5vVE" target="_blank" rel="noopener noreferrer" class="mt-8 inline-block bg-green-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-green-700 hover:scale-105 transition transform">
+              <a href="https://www.fiverr.com/s/9v5vVE" target="_blank" rel="noopener noreferrer" class="mt-8 inline-block bg-green-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-green-700 hover:scale-105">
                 <i class="fas fa-gavel mr-2"></i>View Service on Fiverr
               </a>
             </div>
-            <div class="text-center">
+            <div class="text-center" data-aos="fade-left" data-aos-delay="200">
               <div class="rounded-xl overflow-hidden shadow-2xl border-4 border-white dark:border-gray-700 transform hover:scale-105 transition">
                 <img src="https://lh3.googleusercontent.com/pw/AP1GczPWTMZmzfJclDo_KBBWt9zfEPlHfGYJBGMn_3NNSZ_2bYu0vR4ZyjoUuZxtb_I0cCkoUfFwutxxY_qU3e_BspR2kHyt9Cj-CGIyLhqB7pMTlzygQS0O=w1920-h1080" alt="A professional discussing insurance claims and billing" class="w-full h-auto object-cover" onerror="this.src='https://placehold.co/600x400/3B82F6/FFFFFF?text=Claims+Advocacy'"/>
               </div>
@@ -300,119 +412,123 @@
         </div>
       </section>
 
-      <!-- PUBLICATIONS -->
+      <!-- === PUBLICATIONS UPDATED === -->
       <section id="publications" class="py-20 dark:bg-gray-800">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div class="text-center mb-16">
+          <div class="text-center mb-16" data-aos="fade-up">
             <h2 class="text-4xl font-bold text-gray-900 dark:text-white mb-4">
               <span class="bg-gradient-to-r from-blue-600 to-teal-500 bg-clip-text text-transparent">As Featured In</span>
             </h2>
             <p class="text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">Proud to be featured in publications that highlight innovation and personal journeys in healthcare.</p>
           </div>
-          <div id="publications-grid" class="grid md:grid-cols-3 gap-8">
-            <!-- Skeletons (will be replaced by script) -->
-            <div class="publication-skeleton bg-white dark:bg-gray-700 rounded-xl shadow-lg overflow-hidden flex flex-col animate-pulse"><div class="w-full h-48 bg-gray-200 dark:bg-gray-600"></div><div class="p-6"><div class="h-6 bg-gray-200 dark:bg-gray-600 rounded w-3/4 mb-3"></div><div class="h-4 bg-gray-200 dark:bg-gray-600 rounded w-5/6"></div></div></div>
-            <div class="publication-skeleton bg-white dark:bg-gray-700 rounded-xl shadow-lg overflow-hidden flex flex-col animate-pulse"><div class="w-full h-48 bg-gray-200 dark:bg-gray-600"></div><div class="p-6"><div class="h-6 bg-gray-200 dark:bg-gray-600 rounded w-3/4 mb-3"></div><div class="h-4 bg-gray-200 dark:bg-gray-600 rounded w-5/6"></div></div></div>
-            <div class="publication-skeleton bg-white dark:bg-gray-700 rounded-xl shadow-lg overflow-hidden flex flex-col animate-pulse"><div class="w-full h-48 bg-gray-200 dark:bg-gray-600"></div><div class="p-6"><div class="h-6 bg-gray-200 dark:bg-gray-600 rounded w-3/4 mb-3"></div><div class="h-4 bg-gray-200 dark:bg-gray-600 rounded w-5/6"></div></div></div>
+          <!-- Grid is now 2 cols for better layout -->
+          <div id="publications-grid" class="grid md:grid-cols-2 gap-8">
+            <!-- Skeletons are shown by default and removed by JS -->
+            <div class="bg-white dark:bg-gray-700 rounded-xl shadow-lg overflow-hidden flex flex-col animate-pulse"><div class="w-full h-48 bg-gray-200 dark:bg-gray-600"></div><div class="p-6"><div class="h-6 bg-gray-200 dark:bg-gray-600 rounded w-3/4 mb-3"></div><div class="h-4 bg-gray-200 dark:bg-gray-600 rounded w-5/6"></div></div></div>
+            <div class="bg-white dark:bg-gray-700 rounded-xl shadow-lg overflow-hidden flex flex-col animate-pulse"><div class="w-full h-48 bg-gray-200 dark:bg-gray-600"></div><div class="p-6"><div class="h-6 bg-gray-200 dark:bg-gray-600 rounded w-3/4 mb-3"></div><div class="h-4 bg-gray-200 dark:bg-gray-600 rounded w-5/6"></div></div></div>
+            <div class="bg-white dark:bg-gray-700 rounded-xl shadow-lg overflow-hidden flex flex-col animate-pulse"><div class="w-full h-48 bg-gray-200 dark:bg-gray-600"></div><div class="p-6"><div class="h-6 bg-gray-200 dark:bg-gray-600 rounded w-3/4 mb-3"></div><div class="h-4 bg-gray-200 dark:bg-gray-600 rounded w-5/6"></div></div></div>
+            <div class="bg-white dark:bg-gray-700 rounded-xl shadow-lg overflow-hidden flex flex-col animate-pulse"><div class="w-full h-48 bg-gray-200 dark:bg-gray-600"></div><div class="p-6"><div class="h-6 bg-gray-200 dark:bg-gray-600 rounded w-3/4 mb-3"></div><div class="h-4 bg-gray-200 dark:bg-gray-600 rounded w-5/6"></div></div></div>
           </div>
         </div>
       </section>
 
-      <!-- BLOG -->
+      <!-- === BLOG UPDATED === -->
       <section id="blog" class="py-20 bg-gray-50 dark:bg-gray-900">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div class="text-center mb-16">
+          <div class="text-center mb-16" data-aos="fade-up">
             <h2 class="text-4xl font-bold text-gray-900 dark:text-white mb-4">
               <span class="bg-gradient-to-r from-blue-600 to-teal-500 bg-clip-text text-transparent">Latest Articles</span>
             </h2>
             <p class="text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">Insights, trends, and thoughts on healthcare innovation and business strategy from my Medium blog.</p>
             <div class="mt-8">
-              <a href="https://medium.com/@roomservicebranding" target="_blank" rel="noopener noreferrer" class="bg-black text-white px-6 py-3 rounded-lg font-semibold inline-flex items-center gap-2 hover:bg-gray-800 dark:bg-gray-200 dark:text-gray-900 dark:hover:bg-white hover:scale-105 transition transform">
+              <a href="https://roomservicebranding.medium.com" target="_blank" rel="noopener noreferrer" class="bg-black text-white px-6 py-3 rounded-lg font-semibold inline-flex items-center gap-2 hover:bg-gray-800 dark:bg-gray-200 dark:text-gray-900 dark:hover:bg-white hover:scale-105">
                 <i class="fab fa-medium"></i> Follow on Medium
               </a>
             </div>
           </div>
 
           <div id="blog-posts-container" class="grid md:grid-cols-3 gap-8">
-            <!-- Skeletons (will be replaced by script) -->
+            <!-- skeleton cards replaced by JS -->
             <div class="blog-skeleton bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden flex flex-col animate-pulse"><div class="w-full h-48 bg-gray-200 dark:bg-gray-700"></div><div class="p-6"><div class="h-4 bg-gray-200 dark:bg-gray-700 rounded w-1/4 mb-4"></div><div class="h-6 bg-gray-200 dark:bg-gray-700 rounded w-3/4 mb-3"></div><div class="h-4 bg-gray-200 dark:bg-gray-700 rounded w-5/6"></div></div></div>
             <div class="blog-skeleton bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden flex flex-col animate-pulse"><div class="w-full h-48 bg-gray-200 dark:bg-gray-700"></div><div class="p-6"><div class="h-4 bg-gray-200 dark:bg-gray-700 rounded w-1/4 mb-4"></div><div class="h-6 bg-gray-200 dark:bg-gray-700 rounded w-3/4 mb-3"></div><div class="h-4 bg-gray-200 dark:bg-gray-700 rounded w-5/6"></div></div></div>
             <div class="blog-skeleton bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden flex flex-col animate-pulse"><div class="w-full h-48 bg-gray-200 dark:bg-gray-700"></div><div class="p-6"><div class="h-4 bg-gray-200 dark:bg-gray-700 rounded w-1/4 mb-4"></div><div class="h-6 bg-gray-200 dark:bg-gray-700 rounded w-3/4 mb-3"></div><div class="h-4 bg-gray-200 dark:bg-gray-700 rounded w-5/6"></div></div></div>
           </div>
-          <div id="blog-error-container" class="text-red-500 text-center mt-4"></div>
         </div>
       </section>
 
-      <!-- GALLERY -->
+      <!-- === GALLERY UPDATED === -->
       <section id="gallery" class="py-20 dark:bg-gray-800">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div class="text-center mb-16">
+          <div class="text-center mb-16" data-aos="fade-up">
             <h2 class="text-4xl font-bold text-gray-900 dark:text-white mb-4">
               <span class="bg-gradient-to-r from-blue-600 to-teal-500 bg-clip-text text-transparent">Gallery</span>
             </h2>
             <p class="text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">A collection of professional photos.</p>
           </div>
-          <div id="gallery-grid" class="grid grid-cols-2 md:grid-cols-3 gap-4">
-            <!-- Skeletons (will be replaced by script) -->
-            <div class="gallery-skeleton w-full h-64 bg-gray-200 dark:bg-gray-700 rounded-lg animate-pulse"></div>
-            <div class="gallery-skeleton w-full h-64 bg-gray-200 dark:bg-gray-700 rounded-lg animate-pulse"></div>
-            <div class="gallery-skeleton w-full h-64 bg-gray-200 dark:bg-gray-700 rounded-lg animate-pulse"></div>
-            <div class="gallery-skeleton w-full h-64 bg-gray-200 dark:bg-gray-700 rounded-lg animate-pulse hidden md:block"></div>
-            <div class="gallery-skeleton w-full h-64 bg-gray-200 dark:bg-gray-700 rounded-lg animate-pulse hidden md:block"></div>
-            <div class="gallery-skeleton w-full h-64 bg-gray-200 dark:bg-gray-700 rounded-lg animate-pulse hidden md:block"></div>
+          <div id="gallery-grid" class="grid grid-cols-2 md:grid-cols-4 gap-4">
+            <!-- Skeletons replaced by JS -->
+            <div class="w-full h-64 bg-gray-200 dark:bg-gray-700 rounded-lg animate-pulse"></div>
+            <div class="w-full h-64 bg-gray-200 dark:bg-gray-700 rounded-lg animate-pulse"></div>
+            <div class="w-full h-64 bg-gray-200 dark:bg-gray-700 rounded-lg animate-pulse"></div>
+            <div class="w-full h-64 bg-gray-200 dark:bg-gray-700 rounded-lg animate-pulse"></div>
           </div>
         </div>
       </section>
 
-      <!-- CONTACT -->
+      <!-- === CONTACT UPDATED === -->
       <section id="contact" class="py-20 bg-gray-50 dark:bg-gray-900">
-        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center" data-aos="fade-up">
           <h2 class="text-4xl font-bold text-gray-900 dark:text-white mb-4">
             <span class="bg-gradient-to-r from-blue-600 to-teal-500 bg-clip-text text-transparent">Let's Build the Future</span>
           </h2>
-          <p class="text-xl text-gray-600 dark:text-gray-400 mb-8 max-w-2xl mx-auto">Seeking new opportunities. Let's connect.</p>
+          <p class="text-xl text-gray-600 dark:text-gray-400 mb-12 max-w-2xl mx-auto">I'm actively seeking new opportunities in business development, utilization review, and strategic operations. If you're looking for a dedicated expert to drive growth, let's connect.</p>
 
           <div class="bg-white dark:bg-gray-800 p-8 rounded-xl shadow-lg border border-gray-200 dark:border-gray-700 w-full max-w-2xl mx-auto text-left">
-            <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-6 text-center">Get in Touch</h3>
-            <!-- Form now triggers modal from new script -->
-            <form id="contact-form" class="space-y-6">
+              <h3 class="text-2xl font-bold text-gray-800 dark:text-gray-200 mb-2 text-center">AI-Assisted Outreach</h3>
+              <p class="text-gray-600 dark:text-gray-400 mb-6 text-center">Let AI help you draft a personalized connection request.</p>
+              
+              <form id="contact-form" class="space-y-4">
+                  <div>
+                      <label for="user-name" class="font-semibold text-gray-700 dark:text-gray-300">Your Name</label>
+                      <input type="text" id="user-name" class="w-full mt-1 p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:placeholder-gray-400" placeholder="e.g., Jane Doe" required>
+                  </div>
+                  <div>
+                      <label for="user-company" class="font-semibold text-gray-700 dark:text-gray-300">Your Company (Optional)</label>
+                      <input type="text" id="user-company" class="w-full mt-1 p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:placeholder-gray-400" placeholder="e.g., Innovate Health Corp">
+                  </div>
+                  <div>
+                      <label for="user-purpose" class="font-semibold text-gray-700 dark:text-gray-300">Purpose of Your Message</label>
+                      <input type="text" id="user-purpose" class="w-full mt-1 p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:placeholder-gray-400" placeholder="e.g., Partnership opportunity, speaking engagement..." required>
+                  </div>
+                  <button id="draft-email-btn" type="submit" class="bg-blue-600 w-full mt-6 text-white py-3 rounded-lg font-semibold text-lg inline-flex items-center justify-center gap-2 transition-colors hover:bg-blue-700">
+                     <span class="btn-icon">✨</span>
+                     <span class="btn-text">Draft Connection Email</span>
+                  </button>
+              </form>
+              <div id="contact-form-error" class="text-red-500 text-center mt-4"></div>
+          </div>
+          
+          <p class="text-gray-600 dark:text-gray-400 my-8">Or, reach out directly:</p>
+
+          <div class="grid md:grid-cols-2 gap-8 text-left">
+            <div class="bg-white dark:bg-gray-800 p-8 rounded-xl shadow-lg border border-gray-200 dark:border-gray-700 flex items-start">
+              <i class="fas fa-envelope text-blue-500 text-3xl mr-6 mt-1"></i>
               <div>
-                <label for="name" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Name</label>
-                <input type="text" id="name" name="name" required class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-gray-50 dark:bg-gray-700 focus:ring-blue-500 focus:border-blue-500 transition">
+                <h3 class="text-2xl font-bold text-gray-800 dark:text-gray-200 mb-2">Email</h3>
+                <p class="text-lg text-gray-600 dark:text-gray-400 mb-4">The most direct way to reach me.</p>
+                <a href="mailto:amitmishra@consultant.com" class="text-blue-600 dark:text-blue-400 font-semibold text-lg hover:underline">
+                  amitmishra@consultant.com
+                </a>
               </div>
+            </div>
+            <div class="bg-white dark:bg-gray-800 p-8 rounded-xl shadow-lg border border-gray-200 dark:border-gray-700 flex items-start">
+              <i class="fab fa-linkedin text-blue-500 text-3xl mr-6 mt-1"></i>
               <div>
-                <label for="email" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Email</label>
-                <input type="email" id="email" name="email" required class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-gray-50 dark:bg-gray-700 focus:ring-blue-500 focus:border-blue-500 transition">
-              </div>
-              <div>
-                <label for="message" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Message</label>
-                <textarea id="message" name="message" rows="4" required class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-gray-50 dark:bg-gray-700 focus:ring-blue-500 focus:border-blue-500 transition"></textarea>
-              </div>
-              <div class="text-center">
-                <!-- Swapped button type to "submit" for form validation, script handles the rest -->
-                <button type="submit" id="draft-email-btn" class="bg-blue-600 text-white px-8 py-3 rounded-lg font-semibold text-lg inline-flex items-center justify-center gap-2 hover:bg-blue-700 hover:scale-105 transition transform w-full sm:w-auto">
-                  <span id="contact-btn-text">Send Message</span>
-                  <div id="contact-loader" class="loader hidden"></div>
-                </button>
-              </div>
-            </form>
-            <div id="contact-error" class="mt-4 text-red-500 text-center"></div>
-            
-            <div class="mt-12 pt-8 border-t border-gray-200 dark:border-gray-700">
-              <h4 class="text-lg font-semibold text-gray-800 dark:text-gray-200 mb-4 text-center">Or reach me directly:</h4>
-              <div class="flex flex-col sm:flex-row justify-center gap-6 sm:gap-8 text-gray-600 dark:text-gray-400">
-                <div class="flex items-center gap-3 justify-center">
-                  <i class="fas fa-envelope text-blue-500 text-xl"></i>
-                  <a href="mailto:Amitmishra@consultant.com" class="hover:text-blue-500">Amitmishra@consultant.com</a>
-                </div>
-                <div class="flex items-center gap-3 justify-center">
-                  <i class="fas fa-phone text-blue-500 text-xl"></i>
-                  <a href="tel:4697771004" class="hover:text-blue-500">(469) 777-1004</a>
-                </div>
-                <div class="flex items-center gap-3 justify-center">
-                  <i class="fas fa-map-marker-alt text-blue-500 text-xl"></i>
-                  <span>Dallas-Fort Worth, TX</span>
-                </div>
+                <h3 class="text-2xl font-bold text-gray-800 dark:text-gray-200 mb-2">LinkedIn</h3>
+                <p class="text-lg text-gray-600 dark:text-gray-400 mb-4">View my detailed profile and connect.</p>
+                <a href="https://linkedin.com/in/amitmishraclear" target="_blank" rel="noopener noreferrer" class="text-blue-600 dark:text-blue-400 font-semibold text-lg hover:underline">
+                  linkedin.com/in/amitmishraclear
+                </a>
               </div>
             </div>
           </div>
@@ -420,559 +536,923 @@
       </section>
     </main>
 
-    <!-- FOOTER -->
-    <footer class="bg-gray-800 dark:bg-gray-950 text-gray-400 py-12 border-t border-gray-700">
+    <!-- === FOOTER UPDATED === -->
+    <footer class="bg-gray-800 dark:bg-gray-900 text-gray-300 py-12">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        <div class="flex justify-center gap-6 mb-6">
-          <a href="https://www.linkedin.com/in/amitmishraclear" target="_blank" rel="noopener noreferrer" class="text-2xl hover:text-blue-400 transition" aria-label="LinkedIn">
-            <i class="fab fa-linkedin"></i>
-          </a>
-          <a href="https://medium.com/@roomservicebranding" target="_blank" rel="noopener noreferrer" class="text-2xl hover:text-white transition" aria-label="Medium">
-            <i class="fab fa-medium"></i>
-          </a>
-          <a href="https://www.fiverr.com/s/9v5vVE" target="_blank" rel="noopener noreferrer" class="text-2xl hover:text-green-400 transition" aria-label="Fiverr">
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-explicit" viewBox="0 0 16 16">
-              <path d="M6.828 10.88H6.39v-1.7h.438c.4 0 .732-.092.984-.276s.378-.45.378-.792c0-.343-.127-.604-.38-.78a1.3 1.3 0 0 0-.98-.264H6.39v-1.7h.438c.392 0 .72.09.98.27s.39.44.39.77c0 .34-.127.597-.38.774a1.3 1.3 0 0 0-.98.26V10.88zM5 11.68V4.32h2.06c.63 0 1.15.15 1.57.45.42.3.63.7.63 1.2 0 .5-.21.9-.63 1.2-.42.3-.94.45-1.57.45H6.39v1.7h.438c.64 0 1.17.15 1.58.452.41.3.61.7.61 1.2 0 .5-.2.9-.6 1.2s-.9.45-1.6.45H5z"/>
-              <path d="M0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2zm15 0a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V2z"/>
-            </svg>
-          </a>
-          <a href="https://www.youtube.com/channel/UCa8MMIwYaVjHkv3jH3C1sg" target="_blank" rel="noopener noreferrer" class="text-2xl hover:text-red-500 transition" aria-label="YouTube">
-            <i class="fab fa-youtube"></i>
-          </a>
+        <div class="flex justify-center space-x-6 mb-6">
+          <a href="https://www.linkedin.com/in/amitmishraclear" target="_blank" rel="noopener noreferrer" class="hover:text-blue-400" aria-label="LinkedIn"><i class="fab fa-linkedin text-2xl"></i></a>
+          <a href="https://profile.indeed.com/p/amitm-s49k846" target="_blank" rel="noopener noreferrer" class="hover:text-blue-400" aria-label="Indeed"><i class="fas fa-briefcase text-2xl"></i></a>
+          <a href="https://www.roomservicebranding.com" target="_blank" rel="noopener noreferrer" class="hover:text-blue-400" aria-label="Room Service Branding"><i class="fas fa-globe text-2xl"></i></a>
+          <a href="https://roomservicebranding.medium.com" target="_blank" rel="noopener noreferrer" class="hover:text-blue-400" aria-label="Medium"><i class="fab fa-medium text-2xl"></i></a>
         </div>
-        <p>&copy; <span id="footer-year">2025</span> Amit Mishra. All rights reserved.</p>
+        <p>&copy; <span id="current-year"></span> Amit Mishra. All rights reserved.</p>
+        <p class="text-sm mt-2">Built to innovate. Designed for impact.</p>
       </div>
     </footer>
-  </div>
+  </div> <!-- End #root -->
 
-  <!-- MODALS (for new script) -->
+  <!-- === AI CHATBOT === -->
+  <!-- Chat Widget Button -->
+  <button id="chat-widget-toggle" class="fixed bottom-6 right-6 bg-blue-600 text-white rounded-full p-4 shadow-lg hover:bg-blue-700 transition-all duration-300 transform hover:scale-110 z-50 focus:outline-none focus:ring-4 focus:ring-blue-300 animate-fade-in" aria-label="Open AI chat">
+    <i class="fas fa-robot text-2xl"></i>
+  </button>
   
-  <!-- Email/AI Modal -->
-  <div id="email-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 hidden animate-fade-in">
-    <div class="w-full max-w-lg bg-white dark:bg-gray-800 rounded-xl shadow-2xl animate-fade-in-up">
-      <div class="flex justify-between items-center p-5 border-b dark:border-gray-700">
-        <h3 class="text-xl font-bold text-gray-900 dark:text-white">AI Feature Offline</h3>
-        <button id="close-email-modal-btn" class="text-gray-500 dark:text-gray-400 hover:text-red-500 dark:hover:text-red-400" aria-label="Close modal">
-          <i class="fas fa-times text-2xl"></i>
-        </button>
-      </div>
-      <div class="p-6">
-        <textarea id="email-output" rows="8" class="w-full p-3 border border-gray-300 dark:border-gray-600 rounded-lg bg-gray-50 dark:bg-gray-700 focus:ring-blue-500 focus:border-blue-500" readonly></textarea>
-        <button id="copy-email-btn" class="mt-4 w-full bg-blue-600 text-white px-6 py-2 rounded-lg font-semibold inline-flex items-center justify-center gap-2 hover:bg-blue-700">
-          <i class="fas fa-copy"></i> Copy to Clipboard
-        </button>
-        <p id="copy-success-msg" class="text-green-600 dark:text-green-400 text-center text-sm mt-2"></p>
-      </div>
+  <!-- Chatbot Window -->
+  <div id="chatbot-container" class="fixed bottom-6 right-6 md:bottom-10 md:right-10 w-[calc(100%-3rem)] max-w-md h-[70vh] max-h-[600px] bg-white dark:bg-gray-800 rounded-2xl shadow-2xl flex flex-col z-[60] border border-gray-200 dark:border-gray-700 hidden animate-fade-in-up">
+    <!-- Header -->
+    <div class="flex justify-between items-center p-4 border-b border-gray-200 dark:border-gray-700">
+      <h3 class="text-lg font-bold text-gray-800 dark:text-white flex items-center gap-2">
+        <i class="fas fa-robot text-blue-500"></i>
+        Chat with Amit's AI
+      </h3>
+      <button id="chatbot-close-btn" class="text-gray-500 dark:text-gray-400 hover:text-gray-800 dark:hover:text-white text-2xl focus:outline-none focus:ring-2 focus:ring-blue-500 rounded-full w-8 h-8 flex items-center justify-center" aria-label="Close chat">&times;</button>
     </div>
-  </div>
-
-  <!-- Publication Modal -->
-  <div id="publication-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 hidden animate-fade-in">
-    <div class="w-full max-w-2xl bg-white dark:bg-gray-800 rounded-xl shadow-2xl animate-fade-in-up max-h-[90vh] flex flex-col">
-      <div class="flex justify-between items-center p-5 border-b dark:border-gray-700 flex-shrink-0">
-        <div id="publication-modal-header" class="flex items-center gap-3">
-          <!-- Content injected by script -->
+    <!-- Messages -->
+    <div id="chatbot-messages" class="flex-1 p-4 overflow-y-auto space-y-4">
+      <!-- Initial Message -->
+      <div class="flex justify-start">
+        <div class="max-w-[80%] p-3 rounded-xl chat-bubble-model">
+          <p class="text-sm">Hi there! I'm an AI assistant. How can I help you with information about Amit's expertise, schedule a meeting, or take a message?</p>
         </div>
-        <button id="close-publication-modal-btn" class="text-gray-500 dark:text-gray-400 hover:text-red-500 dark:hover:text-red-400" aria-label="Close modal">
-          <i class="fas fa-times text-2xl"></i>
+      </div>
+      <!-- Suggestion Bubbles -->
+      <div id="chatbot-suggestions" class="flex flex-col items-start gap-2 animate-fade-in-up">
+        <p class="text-sm text-gray-500 dark:text-gray-400 px-2">Or try one of these:</p>
+        <button class="chatbot-suggestion-btn bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 text-blue-600 dark:text-blue-400 text-sm px-3 py-1 rounded-full hover:bg-gray-100 dark:hover:bg-gray-600 transition-colors">Schedule a meeting</button>
+        <button class="chatbot-suggestion-btn bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 text-blue-600 dark:text-blue-400 text-sm px-3 py-1 rounded-full hover:bg-gray-100 dark:hover:bg-gray-600 transition-colors">What are his achievements?</button>
+      </div>
+    </div>
+    <!-- Input -->
+    <div class="p-4 border-t border-gray-200 dark:border-gray-700">
+      <form id="chatbot-form" class="flex gap-2">
+        <input id="chatbot-input" type="text" placeholder="Ask me a question..." class="w-full p-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:text-white">
+        <button type="submit" id="chatbot-submit-btn" class="bg-blue-600 text-white px-4 py-2 rounded-lg font-semibold hover:bg-blue-700 disabled:bg-gray-400 flex items-center justify-center w-12">
+          <i class="fas fa-paper-plane"></i>
         </button>
-      </div>
-      <div id="publication-modal-content" class="p-6 overflow-y-auto prose dark:prose-invert max-w-none">
-        <!-- Article content injected by script -->
-      </div>
+      </form>
     </div>
   </div>
 
-  <!-- Gallery Lightbox -->
-  <div id="lightbox" class="fixed inset-0 z-[60] flex items-center justify-center p-4 hidden animate-fade-in">
-    <button id="lightbox-close" class="absolute top-4 right-4 text-white text-4xl opacity-80 hover:opacity-100" aria-label="Close gallery">
-      <i class="fas fa-times"></i>
-    </button>
-    <button id="lightbox-prev" class="absolute left-4 text-white text-4xl opacity-80 hover:opacity-100" aria-label="Previous image">
-      <i class="fas fa-chevron-left"></i>
-    </button>
-    <button id="lightbox-next" class="absolute right-4 text-white text-4xl opacity-80 hover:opacity-100" aria-label="Next image">
-      <i class="fas fa-chevron-right"></i>
-    </button>
-    <img id="lightbox-img" src="" alt="Gallery image" class="rounded-lg shadow-2xl">
+
+  <!-- MODAL CONTAINER --><div id="modal-container" class="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black bg-opacity-75 hidden" role="dialog" aria-modal="true">
+    <div id="modal-backdrop" class="fixed inset-0"></div>
+    
+    <!-- Content Modal (for articles, insights) --><div id="modal-content-box" class="modal-content relative w-full max-w-4xl bg-white dark:bg-gray-800 rounded-xl shadow-2xl overflow-hidden hidden flex-col">
+      <div class="flex justify-between items-center p-4 border-b border-gray-200 dark:border-gray-700">
+        <h3 id="modal-title" class="text-xl font-bold text-gray-800 dark:text-white">Publication Feature</h3>
+        <button id="modal-close-btn" class="text-gray-500 hover:text-gray-800 dark:text-gray-400 dark:hover:text-white" aria-label="Close modal">
+          <i class="fas fa-times text-2xl"></i>
+        </button>
+      </div>
+      <div class="p-6 sm:p-8 overflow-y-auto max-h-[80vh]">
+        <div id="modal-article-content" class="prose dark:prose-invert max-w-none">
+          <!-- Article content injected here --></div>
+      </div>
+    </div>
+
+    <!-- Image Modal (for gallery) --><div id="modal-image-box" class="modal-content relative w-full max-w-5xl hidden">
+      <img id="modal-image-src" src="" alt="Gallery image" class="w-full h-auto max-h-[85vh] object-contain rounded-lg">
+      <button id="modal-image-close-btn" class="absolute -top-4 -right-4 sm:top-2 sm:right-2 text-white bg-black bg-opacity-50 rounded-full w-10 h-10 flex items-center justify-center hover:bg-opacity-75" aria-label="Close image">
+        <i class="fas fa-times text-xl"></i>
+      </button>
+      <!-- === FIX: Gallery Navigation === -->
+      <button id="modal-image-prev-btn" class="absolute left-4 top-1/2 -translate-y-1/2 text-white bg-black bg-opacity-40 rounded-full w-12 h-12 flex items-center justify-center hover:bg-opacity-70 text-2xl" aria-label="Previous image">
+        <i class="fas fa-chevron-left"></i>
+      </button>
+      <button id="modal-image-next-btn" class="absolute right-4 top-1/2 -translate-y-1/2 text-white bg-black bg-opacity-40 rounded-full w-12 h-12 flex items-center justify-center hover:bg-opacity-70 text-2xl" aria-label="Next image">
+        <i class="fas fa-chevron-right"></i>
+      </button>
+    </div>
+
   </div>
 
+<!-- =============================================== --><!-- ============ MAIN PAGE SCRIPT ================= --><!-- =============================================== --><script>
+document.addEventListener('DOMContentLoaded', () => {
+  console.log("DOM fully loaded and parsed. Initializing site scripts.");
 
-  <!-- SCRIPT 1: THEME & NAV (Patched) -->
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      console.log("SCRIPT 1: Theme & Nav (Patched)");
-      
-      const themeToggleBtns = document.querySelectorAll('.theme-toggle-btn');
-      const htmlEl = document.documentElement;
+  // --- Initialize AOS ---
+  AOS.init({
+    duration: 800,
+    once: true,
+  });
 
-      // --- Central Sync Function ---
-      const syncTheme = () => {
-        const isDark = localStorage.getItem('darkMode') === 'true';
-        htmlEl.classList.toggle('dark', isDark); 
-        const iconClass = isDark ? 'fa-sun' : 'fa-moon';
-        themeToggleBtns.forEach(btn => {
-          btn.innerHTML = `<i class="fas ${iconClass} text-xl"></i>`;
-        });
-      };
+  // --- Data ---
 
-      // --- Function to handle the theme button click ---
-      const handleThemeToggle = () => {
-        const isDark = localStorage.getItem('darkMode') === 'true';
-        localStorage.setItem('darkMode', !isDark);
-        syncTheme();
-        if (window.createRevenueChart) {
-          window.createRevenueChart();
-        }
-      };
+  /**
+   * Data for the 'As Featured In' section.
+   * === UPDATED with 4 real publications ===
+   */
+  const publicationsData = [
+    {
+      id: 'voyage-dallas',
+      // === FIX: Use gallery image 1 as thumbnail ===
+      thumbnail: 'https://i.postimg.cc/VNLD9j3T/IMG-4601.jpg',
+      logo: "https://i.postimg.cc/Qx3BA4k3/voyage-dallas-logo.png",
+      publicationName: "Voyage Dallas",
+      description: "An inspiring story of resilience and reinvention, detailing my journey from healthcare leadership to tech entrepreneurship.",
+      article: `<h3>From Setback to Comeback</h3><p>The Dallas-Fort Worth area is built on stories of grit, resilience, and reinvention. It's a place where setbacks can become setups for incredible comebacks. Few stories embody this spirit more than that of <strong>Amit Mishra</strong>, a seasoned healthcare administrator who is now channeling a lifetime of experience into the world of tech and entrepreneurship.</p><p>After a successful eight-year career in behavioral health and a life built in recovery, Amit faced a profound personal crisis that brought him back to his DFW roots. But instead of returning in defeat, he arrived with a renewed purpose.</p><p>We had the privilege of sitting down with Amit to hear his story in his own words—a journey of professional dedication, personal struggle, and the incredible power of starting over.</p><h3>Q: Amit, thanks for joining us. Can you start by telling our readers about your background before your recent ventures?</h3><p>Thank you for having me. For the better part of a decade, my world was behavioral health. I worked in Austin in various leadership roles within the addiction and mental health treatment space, from overseeing recovery housing to serving as an Executive Director. My focus was on building programs and systems that gave people a real chance at healing. It was incredibly rewarding work, and I had built a life I was proud of, grounded in my own eight years of recovery.</p><h3>Q: Your journey took a significant turn. Would you be comfortable sharing what led you back to DFW?</h3><p>Life has a way of throwing you curveballs you never see coming. In May of 2024, after eight years of sobriety, I had a relapse. The timing couldn't have been more devastating—it was just seven days before my wedding. The fallout was immediate and life-altering. The engagement was broken, and the future I had meticulously planned evaporated overnight.</p><p>Facing that kind of rock bottom forces you to make a choice. I could either let it define me or I could use it as a catalyst. I chose to come home to DFW, not to hide, but to heal and rebuild from the ground up, surrounded by my family.</p><h3>Q: That sounds incredibly challenging. How did you find the strength to pivot from that moment into launching not one, but two businesses?</h3><p>Honestly, the pivot was born out of necessity and a desire to channel my experiences—both good and bad—into something new. When you've worked in mental health, you develop a deep understanding of human behavior, communication, and the need for authentic connection. I realized those skills were directly transferable to the world of branding and marketing.</p><p>I've always been fascinated by technology, especially artificial intelligence. So, I founded <strong>Room Service Branding</strong>, a digital media firm that sits at the intersection of AI and brand strategy. We help businesses tell their stories more effectively and efficiently using cutting-edge tools.</p><p>At the same time, I saw my mother had a lifelong dream of starting her own business. She's brilliant with numbers. So, I decided to help her launch <strong>Keystone Financial</strong>, a bookkeeping firm. Supporting her dream has been just as important to my own healing as starting my own venture. It's about building a legacy and creating opportunities, together.</p><h3>Q: What's the biggest lesson you've learned from your journey that you'd share with other entrepreneurs or anyone facing a major setback?</h3><p>The biggest lesson is that your path doesn't have to be linear to be successful. We're often sold this idea that we have to follow a straight line from A to B, but life is so much messier and more beautiful than that. Your lowest moments can become the bedrock of your greatest strengths. Don't be afraid to start over. Don't be afraid to come home. And most importantly, don't be afraid to ask for help and to help others along the way. Your comeback is always more powerful than your setback.</p>`
+    },
+    {
+      id: 'nova-recovery',
+      thumbnail: "https://i.postimg.cc/jjrCsX41/IMG-4126.jpg",
+      logo: "https://i.postimg.cc/mg5mcP5d/IMG-4113.jpg",
+      publicationName: "Nova Recovery Center",
+      description: "Featured in 'Stories Of Addiction Recovery,' sharing my personal journey from struggle to finding true freedom from addiction.",
+      article: `<h3>Reclaiming Life from Heroin and Alcohol Addiction</h3><p>Amit grew up in a home with two loving and supportive parents, but the older he got, the more disengaged from society he became. Convinced that his youth was the time to have fun and take risks, Amit slowly began to stray from his homegrown values and started drinking and smoking weed. Eventually, that wasn't enough anymore, and he began searching for something more.</p><p>"I had several friends who wouldn't stick around if drugs were in the environment, but I was the opposite," he said. "I was never scared to try something more. I was always chasing the possibility that something would make me feel even better."</p><p>That chase led Amit straight into the grip of heavy addiction. He became fully dependent on prescription drugs and pain medication. Although his parents knew his behavior was a problem, they had never been exposed to addiction and didn't know how to deal with it. They just assumed that one day he would grow out of it. So, Amit's chase continued.</p><h3>Complete Powerlessness</h3><p>Amit spent years living at his parents' house, mooching off them. He was lazy, entitled, and felt like he deserved all these things without having to work for them. During this time, his addiction worsened, and he spent some time in and out of jail. He felt extremely alienated but deep down he knew that his drug abuse was the problem.</p><p>"Every time I got out of prison, I had to change the way I felt about myself," he said. "I'd say, 'I'll just smoke weed' or 'I'll just drink alcohol' hoping my addiction would fade, but that was never the case."</p><p>Amit was completely powerless to his addiction. It wasn't long before he was introduced to heroin and immediately became hooked. His fear of needles couldn't keep him from chasing the next best feeling.</p><p>"I will never forget the feeling," he said. "It made everything okay. Once I got a taste of that needle, it didn't matter who I was going to hurt, who I was going to steal from, how many jobs I was going to lose. None of that mattered. I had to get high."</p><h3>Trapped in a Vicious Cycle</h3><p>Drugs and alcohol had completely consumed Amit's life. He was in and out of rehab, trapped in a vicious cycle that always started with a treatment center and ended with a needle in his arm. After a four-month run of continuous heavy drug use, Amit was kicked out of his sober living home and suddenly found himself homeless and alone.</p><pre><code>&lt;p&gt;"In that moment, I really felt like I met God because it was just me and my maker in my car," he said. "I'm not an emotional person, but I was crying, pissed off, punching the steering wheel...I didn't know what else to do." He had a little bit of money left so he went and bought some heroin, thinking, "Whatever happens, happens. If I don't wake up, I'll be doing myself and the world a favor because I'm nothing but a burden."&lt;/p&gt;</code></pre><h3>A Humbling Experience Gives Way to True Freedom</h3><p>Somehow Amit survived his heroin binge. Shortly after, he was contacted by an old friend who was in recovery. His friend drove him to a hospital in Dallas where he detoxed and doctors recommended Amit enroll in 90-day treatment. A friend of the family recommended Nova Recovery Center.</p><p>"Nova was different," he said. "They didn't let up on me one bit. The staff was able to show me the truth about myself and why I can't stay sober." During his 90 days at Nova, Amit pushed through the pain and was humbled. He worked with the staff to really understand and apply the 12 steps to his life.</p><p>After completing his rehab at Nova, Amit moved into a sober living home in Austin and continued working the 12-step program. He accepted a position with BRC Recovery, where he currently works as a House Manager at a sober living home.</p><p>"There is absolutely a way out [of addiction]," Amit says. "I was dying. But if recovery was possible for me, it's absolutely possible for anyone."</p>`
+    },
+    {
+      id: 'brc-healthcare',
+      thumbnail: "https://i.postimg.cc/1zZ49Hrb/IMG-4124.jpg",
+      logo: "https://i.postimg.cc/4xSWKYSF/IMG-4111.jpg",
+      publicationName: "BRC Healthcare",
+      description: "A #FeatureFriday spotlight on my role and journey as a Segue Recovery Coach with the BRC Healthcare family.",
+      article: `<h3>#FeatureFriday: Everyone meet Amit Mishra</h3><p>Amit Mishra, Segue Recovery Coach, PRSS. Amit was born in Ann Arbor, Michigan. He moved to Dallas at a young age and quickly started getting in trouble. Amit was never content with life, but he did find sports to be a healthy outlet for all his excess energy. Amit began using drugs and alcohol in high school and that quickly escalated in college. Things ultimately got out of control.</p><p>"My family was unsure of how to handle my drug abuse, and I began the cycle of going in and out of treatment centers. Each time I entered one of these facilities, I did want to get sober, but I never obtained an adequate solution and I would return to drugs and alcohol, seemingly against my own will." In 2016, Amit was intervened on and sent to a treatment center just outside of Austin, TX where he was exposed to a program of action that offered the solution.</p><p>"There, I met mentors who taught me this work and who I still look up to today. My greatest gift is being able to help others today and spread the message I was so freely given. I have worked various positions throughout BRC and each position I have held is a different blessing. I can honestly say I love my job and coming to work for this amazing company each day."</p>`
+    },
+    {
+      id: 'heartwater',
+      thumbnail: "https://i.postimg.cc/HLCjp29K/IMG-3701.jpg",
+      logo: "https://i.postimg.cc/T34tyK47/IMG-4114.jpg",
+      publicationName: "HeartWater",
+      description: "A feature sharing insights on recovery and personal growth within the healthcare community.",
+      article: `<h3>Pour Your Heart Out: Amit's Story</h3><p>"Originally from Ann Arbor, MI. Growing up, my parents worked hard and provided me with everything I needed and more. At a young age I moved to Dallas, TX. I instantly knew I was home. I was a bright, intelligent, and funny kid. I was always told by others that 'I had potential'. Some would strive to reach that potential but unfortunately it always left me in a place of defeat. Because of defeat, I almost always felt alone.</p><p>I spent my childhood playing sports and as hard as I tried, my mind always told me it wasn't good enough. I started getting in trouble with the law at a very early age by shop lifting. Breaking the rules always gave me the rush I was looking for.</p><p>As I got older I started using PEDs, smoking marijuana and drinking beer. Drugs and alcohol finally gave me the temporary relief I was looking for. I thought it was all fun and games. I watched many of my friends and family go off and do wonderful things with their lives and I was stuck in the same place.</p><p>Gradually, my drug and alcohol use started to progress. I found myself taking prescription medications that did not belong to me and my family and friends started to notice. I discovered intravenous heroin use for the time and my addiction sky rocketed everyday after that. The next few years, I went in and out of jail/prison. It seemed as if that was the only life I'd ever live. I joined a gang and went from someone who was raised right to someone who was completely lost.</p><p>All of this was a result of not taking direction from others that knew what they were talking about. In 2016, I couldn't handle this way of life anymore and tried to purposefully overdose. I woke up the next day and realized I was still alive for a reason and reached out to a close friend who helped me find the treatment I needed in Austin, TX. I've been sober everyday since and life has been challenging but fulfilling at the same time. I spend my days helping others in ways I never thought were possible. Turns out I never was alone and that God was with me my entire life. I just had to reach for him!" - Amit M.</p>`
+    }
+  ];
 
-      // --- Attach Click Listeners ---
-      themeToggleBtns.forEach(btn => btn.addEventListener('click', handleThemeToggle));
-      
-      // --- Initial Sync on DOM Load ---
-      syncTheme(); 
+  /**
+   * Data for the Gallery section.
+   * === UPDATED with new images, 4th/5th/6th removed, 2 new added ===
+   */
+  const galleryData = [
+    { id: 'img1', src: 'https://i.postimg.cc/VNLD9j3T/IMG-4601.jpg', alt: 'Amit Mishra professional photo' },
+    { id: 'img2', src: 'https://i.postimg.cc/cCX8D1wv/IMG-5273-Original.jpg', alt: 'Amit Mishra gallery image' },
+    { id: 'img3', src: 'https://i.postimg.cc/TY410GLq/IMG-8986.png', alt: 'Amit Mishra gallery image' },
+    { id: 'img8', src: 'https://i.postimg.cc/c4bChZgR/IMG-8987.png', alt: 'Amit Mishra gallery image' },
+    { id: 'img5', src: 'https://i.postimg.cc/ZK5NW3zS/IMG-4007-Original.jpg', alt: 'Amit Mishra gallery image' },
+    { id: 'img6', src: 'https://i.postimg.cc/28KyGmbw/IMG_8442.jpg', alt: 'Amit Mishra gallery image' }
+  ];
 
-      // --- [DELETED] Redundant listeners removed as requested ---
-      // window.addEventListener('pageshow', ...);
-      // window.addEventListener('hashchange', ...);
-      // allAnchorLinks.forEach(...);
+  // === FIX: Static Blog Post Data (was fetchBlogPosts) ===
+  const blogData = [
+    {
+      title: 'Mental Health and AI',
+      link: 'https://medium.com/@roomservicebranding/mental-health-and-ai-285f54910772',
+      thumbnail: 'https://miro.medium.com/v2/resize:fit:1400/format:webp/1*LjS17lzVzMBOy6Az7qMkSQ@2x.jpeg',
+      date: 'October 24, 2024',
+      snippet: 'AI is rapidly transforming mental healthcare, from virtual therapists to diagnostic tools. This post explores the innovative ways AI is supporting mental wellness...'
+    },
+    {
+      title: 'A Vending Machine is a Tech Business',
+      link: 'https://roomservicebranding.medium.com/forget-passive-income-a-vending-machine-is-a-tech-business-heres-how-you-win-in-2025-0fbb43c89668',
+      thumbnail: 'https://miro.medium.com/v2/resize:fit:1400/format:webp/1*WRIgReOjo7JIlUSp8EChhw@2x.jpeg',
+      date: 'September 20, 2024',
+      snippet: 'Forget passive income. Modern vending is a data-driven retail business. Here’s how you leverage technology, analytics, and VMS to win in 2025...'
+    },
+    {
+      title: 'Manus AI: An In-Depth Look',
+      link: 'https://roomservicebranding.medium.com/manus-ai-an-in-depth-look-at-the-autonomous-ai-agent-dfb5ebc89fae',
+      thumbnail: 'https://miro.medium.com/v2/resize:fit:1400/format:webp/1*gE_nYGYky3wKqLwfpbJc7A.jpeg',
+      date: 'September 13, 2024',
+      snippet: 'An in-depth look at Manus AI, the autonomous AI agent that is changing the game for task automation and complex digital workflows...'
+    }
+  ];
 
 
-      // --- Mobile Menu ---
-      const menuToggle = document.getElementById('mobile-menu-toggle');
-      const mobileMenu = document.getElementById('mobile-menu');
-      const mobileMenuLinks = document.querySelectorAll('.mobile-menu-link');
+  /**
+   * Data for the Keystone Ledger tabs.
+   */
+  const ledgerTabs = [
+    'Executive Dashboard',
+    'Chart of Accounts',
+    'Income Statement',
+    'Accounts Receivable',
+    'Balance Sheet',
+    'Journal Entries'
+  ];
+  const ledgerContent = {
+    'Executive Dashboard': `
+        <h4 class="text-lg font-bold text-gray-800 dark:text-gray-200 mb-1">Key Performance Indicators</h4>
+        <p class="text-sm text-gray-500 dark:text-gray-400 mb-4">Real-Time Financial Overview</p>
+        <div class="overflow-x-auto">
+        <table class="w-full text-sm text-left text-gray-700 dark:text-gray-300">
+            <thead class="bg-gray-100 dark:bg-gray-700 text-xs uppercase">
+                <tr>
+                    <th class="px-4 py-3">Metric</th>
+                    <th class="px-4 py-3 text-right">Current Period</th>
+                    <th class="px-4 py-3 text-right">Previous Period</th>
+                    <th class="px-4 py-3 text-right">% Change</th>
+                    <th class="px-4 py-3 text-right">Target</th>
+                    <th class="px-4 py-3 text-center">Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="border-b dark:border-gray-700">
+                    <td class="px-4 py-3 font-medium">Total Revenue</td>
+                    <td class="px-4 py-3 text-right">$125,000</td>
+                    <td class="px-4 py-3 text-right">$120,000</td>
+                    <td class="px-4 py-3 text-right text-green-600">4.2%</td>
+                    <td class="px-4 py-3 text-right">$150,000</td>
+                    <td class="px-4 py-3 text-center"><span class="px-2 py-1 text-xs font-semibold text-blue-800 bg-blue-100 rounded-full">ON TRACK</span></td>
+                </tr>
+                <tr class="border-b dark:border-gray-700">
+                    <td class="px-4 py-3 font-medium">Net Income</td>
+                    <td class="px-4 py-3 text-right">$30,000</td>
+                    <td class="px-4 py-3 text-right">$20,000</td>
+                    <td class="px-4 py-3 text-right text-green-600">50.0%</td>
+                    <td class="px-4 py-3 text-right">$50,000</td>
+                    <td class="px-4 py-3 text-center"><span class="px-2 py-1 text-xs font-semibold text-green-800 bg-green-100 rounded-full">GOOD</span></td>
+                </tr>
+                <tr class="border-b dark:border-gray-700">
+                    <td class="px-4 py-3 font-medium">Cash Position</td>
+                    <td class="px-4 py-3 text-right">$45,000</td>
+                    <td class="px-4 py-3 text-right">$40,000</td>
+                    <td class="px-4 py-3 text-right text-green-600">12.5%</td>
+                    <td class="px-4 py-3 text-right">$25,000</td>
+                    <td class="px-4 py-3 text-center"><span class="px-2 py-1 text-xs font-semibold text-yellow-800 bg-yellow-100 rounded-full">EXCELLENT</span></td>
+                </tr>
+                <tr>
+                    <td class="px-4 py-3 font-medium">Accounts Receivable</td>
+                    <td class="px-4 py-3 text-right">$28,500</td>
+                    <td class="px-4 py-3 text-right">$30,000</td>
+                    <td class="px-4 py-3 text-right text-green-600">-5.0%</td>
+                    <td class="px-4 py-3 text-right">$30,000</td>
+                    <td class="px-4 py-3 text-center"><span class="px-2 py-1 text-xs font-semibold text-green-800 bg-green-100 rounded-full">GOOD</span></td>
+                </tr>
+            </tbody>
+        </table>
+        </div>`,
+    'Chart of Accounts': `
+        <h4 class="text-lg font-bold text-gray-800 dark:text-gray-200 mb-1">Chart of Accounts</h4>
+        <p class="text-sm text-gray-500 dark:text-gray-400 mb-4">The Foundation of Your Financial System</p>
+        <div class="overflow-x-auto">
+        <table class="w-full text-sm text-left text-gray-700 dark:text-gray-300">
+            <thead class="bg-gray-100 dark:bg-gray-700 text-xs uppercase">
+                <tr>
+                    <th class="px-4 py-3">Account #</th>
+                    <th class="px-4 py-3">Account Name</th>
+                    <th class="px-4 py-3">Type</th>
+                    <th class="px-4 py-3 text-right">Current Balance</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="border-b dark:border-gray-700">
+                    <td class="px-4 py-3">1000</td>
+                    <td class="px-4 py-3 font-medium">Cash - Operating Acct</td>
+                    <td class="px-4 py-3">Asset</td>
+                    <td class="px-4 py-3 text-right">$25,000</td>
+                </tr>
+                <tr class="bg-gray-50 dark:bg-gray-800/50 border-b dark:border-gray-700">
+                    <td class="px-4 py-3">1200</td>
+                    <td class="px-4 py-3 font-medium">Accounts Receivable</td>
+                    <td class="px-4 py-3">Asset</td>
+                    <td class="px-4 py-3 text-right">$18,500</td>
+                </tr>
+                <tr class="border-b dark:border-gray-700">
+                    <td class="px-4 py-3">2000</td>
+                    <td class_name="px-4 py-3 font-medium">Accounts Payable</td>
+                    <td class="px-4 py-3">Liability</td>
+                    <td class="px-4 py-3 text-right">$8,500</td>
+                </tr>
+                <tr class="bg-gray-50 dark:bg-gray-800/50 border-b dark:border-gray-700">
+                    <td class="px-4 py-3">4000</td>
+                    <td class="px-4 py-3 font-medium">Sales Revenue</td>
+                    <td class="px-4 py-3">Revenue</td>
+                    <td class="px-4 py-3 text-right">$125,000</td>
+                </tr>
+                 <tr>
+                    <td class="px-4 py-3">5000</td>
+                    <td class="px-4 py-3 font-medium">Office Expenses</td>
+                    <td class="px-4 py-3">Expense</td>
+                    <td class="px-4 py-3 text-right">$15,000</td>
+                </tr>
+            </tbody>
+        </table>
+        </div>`,
+    'Income Statement': `
+        <h4 class="text-lg font-bold text-gray-800 dark:text-gray-200 mb-1">Income Statement</h4>
+        <p class="text-sm text-gray-500 dark:text-gray-400 mb-4">Profit & Loss Analysis - Year to Date</p>
+        <div class="space-y-2 text-sm">
+            <div class="font-bold uppercase text-gray-500 dark:text-gray-400">Revenue</div>
+            <div class="flex justify-between border-b dark:border-gray-700 pb-1"><span>Sales Revenue</span><span>$125,000</span></div>
+            <div class="flex justify-between border-b dark:border-gray-700 pb-1"><span>Service Revenue</span><span>$25,000</span></div>
+            <div class="flex justify-between font-bold pt-1"><span>TOTAL REVENUE</span><span>$153,500</span></div>
+            
+            <div class="font-bold uppercase text-gray-500 dark:text-gray-400 pt-4">Cost of Goods Sold</div>
+            <div class="flex justify-between border-b dark:border-gray-700 pb-1"><span>Materials</span><span>$35,000</span></div>
+            <div class="flex justify-between border-b dark:border-gray-700 pb-1"><span>Direct Labor</span><span>$28,000</span></div>
+             <div class="flex justify-between font-bold pt-1"><span>TOTAL COGS</span><span>$63,000</span></div>
 
-      const handleMobileMenuToggle = () => {
-        const isOpen = mobileMenu.classList.toggle('translate-x-full');
-        menuToggle.setAttribute('aria-expanded', !isOpen);
-        document.body.style.overflow = isOpen ? 'auto' : 'hidden';
-        menuToggle.innerHTML = isOpen ? '<i class="fas fa-bars text-2xl"></i>' : '<i class="fas fa-times text-2xl"></i>';
-      };
+            <div class="flex justify-between font-extrabold pt-2 text-base bg-yellow-100 dark:bg-yellow-500/20 p-2 rounded-md"><span>GROSS PROFIT</span><span>$90,500</span></div>
 
-      menuToggle.addEventListener('click', handleMobileMenuToggle);
-      mobileMenuLinks.forEach(link => {
-        link.addEventListener('click', handleMobileMenuToggle);
-      });
+            <div class="font-bold uppercase text-gray-500 dark:text-gray-400 pt-4">Operating Expenses</div>
+            <div class="flex justify-between border-b dark:border-gray-700 pb-1"><span>Salaries & Wages</span><span>$45,000</span></div>
+            <div class="flex justify-between border-b dark:border-gray-700 pb-1"><span>Rent</span><span>$18,000</span></div>
+        </div>`,
+    'Accounts Receivable': `
+        <h4 class="text-lg font-bold text-gray-800 dark:text-gray-200 mb-1">Accounts Receivable</h4>
+        <p class="text-sm text-gray-500 dark:text-gray-400 mb-4">Customer Invoices and Payment Tracking</p>
+        <div class="overflow-x-auto">
+        <table class="w-full text-sm text-left text-gray-700 dark:text-gray-300">
+            <thead class="bg-gray-100 dark:bg-gray-700 text-xs uppercase">
+                <tr>
+                    <th class="px-4 py-3">Customer</th>
+                    <th class="px-4 py-3">Date</th>
+                    <th class="px-4 py-3 text-right">Amount</th>
+                    <th class="px-4 py-3 text-right">Balance</th>
+                    <th class="px-4 py-3 text-center">Days Outstanding</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="border-b dark:border-gray-700">
+                    <td class="px-4 py-3 font-medium">ABC Corp</td>
+                    <td class="px-4 py-3">2024-01-10</td>
+                    <td class="px-4 py-3 text-right">$15,000</td>
+                    <td class="px-4 py-3 text-right">$5,000</td>
+                    <td class="px-4 py-3 text-center text-red-500">25</td>
+                </tr>
+                <tr class="bg-gray-50 dark:bg-gray-800/50 border-b dark:border-gray-700">
+                    <td class="px-4 py-3 font-medium">XYZ Inc</td>
+                    <td class="px-4 py-3">2024-01-15</td>
+                    <td class="px-4 py-3 text-right">$8,500</td>
+                    <td class="px-4 py-3 text-right">$8,500</td>
+                    <td class="px-4 py-3 text-center text-orange-500">20</td>
+                </tr>
+                <tr class="border-b dark:border-gray-700">
+                    <td class="px-4 py-3 font-medium">DEF Company</td>
+                    <td class="px-4 py-3">2024-01-25</td>
+                    <td class="px-4 py-3 text-right">$6,800</td>
+                    <td class="px-4 py-3 text-right">$3,800</td>
+                    <td class="px-4 py-3 text-center text-green-600">10</td>
+                </tr>
+            </tbody>
+        </table>
+        </div>`,
+    'Balance Sheet': `
+        <h4 class="text-lg font-bold text-gray-800 dark:text-gray-200 mb-1">Balance Sheet</h4>
+        <p class="text-sm text-gray-500 dark:text-gray-400 mb-4">Financial Position Statement</p>
+        <div class="space-y-2 text-sm">
+            <div class="font-bold uppercase text-gray-500 dark:text-gray-400">Assets</div>
+            <div class="flex justify-between border-b dark:border-gray-700 pb-1 pl-4"><span>Cash - Operating</span><span>$45,000</span></div>
+            <div class="flex justify-between border-b dark:border-gray-700 pb-1 pl-4"><span>Accounts Receivable</span><span>$28,500</span></div>
+            <div class="flex justify-between font-bold pt-1 bg-gray-100 dark:bg-gray-700 p-2 rounded-md"><span>TOTAL ASSETS</span><span>$145,500</span></div>
 
-      // --- [REPLACED] Navbar Scroll Effect (Patched) ---
-      const navbar = document.getElementById('navbar');
-      window.addEventListener('scroll', () => {
-        const isDark = document.documentElement.classList.contains('dark');
+            <div class="font-bold uppercase text-gray-500 dark:text-gray-400 pt-4">Liabilities</div>
+            <div class="flex justify-between border-b dark:border-gray-700 pb-1 pl-4"><span>Accounts Payable</span><span>$8,500</span></div>
+             <div class="flex justify-between font-bold pt-1 bg-gray-100 dark:bg-gray-700 p-2 rounded-md"><span>TOTAL LIABILITIES</span><span>$11,700</span></div>
 
-        // ---- DARK MODE: always dark glass navbar ----
-        if (isDark) {
-          navbar.classList.add('dark:bg-gray-900/90','backdrop-blur-md','shadow-lg');
-          navbar.classList.remove('bg-transparent','bg-white');
-          return;
-        }
-
-        // ---- LIGHT MODE: original scroll behavior ----
-        if (window.scrollY > 50) {
-          navbar.classList.add('bg-white','shadow-lg','backdrop-blur-md');
-          navbar.classList.remove('bg-transparent');
-        } else {
-          navbar.classList.remove('bg-white','shadow-lg','backdrop-blur-md');
-          navbar.classList.add('bg-transparent');
-        }
-      });
-
-      // --- Footer Year ---
-      document.getElementById('footer-year').textContent = new Date().getFullYear();
-    });
-  </script>
+            <div class="font-bold uppercase text-gray-500 dark:text-gray-400 pt-4">Equity</div>
+            <div class="flex justify-between border-b dark:border-gray-700 pb-1 pl-4"><span>Owner Equity</span><span>$75,000</span></div>
+            <div class="flex justify-between font-bold pt-1 bg-gray-100 dark:bg-gray-700 p-2 rounded-md"><span>TOTAL EQUITY</span><span>$133,800</span></div>
+        </div>`,
+    'Journal Entries': `
+        <h4 class="text-lg font-bold text-gray-800 dark:text-gray-200 mb-1">Journal Entries</h4>
+        <p class="text-sm text-gray-500 dark:text-gray-400 mb-4">Transaction Recording & Double-Entry Bookkeeping</p>
+        <div class="overflow-x-auto">
+        <table class="w-full text-sm text-left text-gray-700 dark:text-gray-300">
+            <thead class="bg-gray-100 dark:bg-gray-700 text-xs uppercase">
+                <tr>
+                    <th class="px-4 py-3">Date</th>
+                    <th class="px-4 py-3">Account</th>
+                    <th class="px-4 py-3">Description</th>
+                    <th class="px-4 py-3 text-right">Debit</th>
+                    <th class="px-4 py-3 text-right">Credit</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="border-b dark:border-gray-700">
+                    <td class="px-4 py-3" rowspan="2">2024-01-05</td>
+                    <td class="px-4 py-3">1500</td>
+                    <td class="px-4 py-3 font-medium">Purchase office equipment</td>
+                    <td class="px-4 py-3 text-right">$15,000</td>
+                    <td class="px-4 py-3 text-right"></td>
+                </tr>
+                <tr class="border-b dark:border-gray-700 bg-gray-50 dark:bg-gray-800/50"><td class="px-4 py-3 text-right">1000</td><td class="pl-8 text-gray-500 dark:text-gray-400">Cash</td><td class="px-4 py-3 text-right"></td><td class="px-4 py-3 text-right">$15,000</td></tr>
+                
+                 <tr class="border-b dark:border-gray-700">
+                    <td class="px-4 py-3" rowspan="2">2024-01-15</td>
+                    <td class="px-4 py-3">5000</td>
+                    <td class="px-4 py-3 font-medium">Office rent payment</td>
+                    <td class="px-4 py-3 text-right">$2,500</td>
+                    <td class="px-4 py-3 text-right"></td>
+                </tr>
+                <tr class="border-b dark:border-gray-700 bg-gray-50 dark:bg-gray-800/50"><td class="px-4 py-3 text-right">1000</td><td class="pl-8 text-gray-500 dark:text-gray-400">Cash</td><td class="px-4 py-3 text-right"></td><td class="px-4 py-3 text-right">$2,500</td></tr>
+            </tbody>
+        </table>
+        </div>`
+  };
   
-  <!-- SCRIPT 2: DYNAMIC CONTENT (Unchanged) -->
-  <script>
-    document.addEventListener('DOMContentLoaded', async () => {
-      console.log("SCRIPT 2 (no-AI): started");
+  // --- Get Elements ---
+  const $ = (selector) => document.querySelector(selector);
+  const $$ = (selector) => document.querySelectorAll(selector);
 
-      // --- Utility: fatal error banner (kept just in case)
-      const displayFatalError = (message) => {
-        const errorDisplay = document.getElementById("blog-error-container") || document.getElementById("insights-error") || document.body;
-        const errorP = document.createElement('p');
-        errorP.textContent = message;
-        errorP.className = "text-red-600 dark:text-red-400 text-center text-lg p-4 font-semibold fatal-error";
-        if (errorDisplay && !errorDisplay.querySelector('.fatal-error')) {
-          errorDisplay.appendChild(errorP);
-        } else if (!document.querySelector('.fatal-error')) {
-          document.body.insertAdjacentElement('afterbegin', errorP);
-        }
-      };
+  const htmlEl = document.documentElement;
+  const navbar = $('#navbar');
+  const mobileMenuToggle = $('#mobile-menu-toggle');
+  const mobileMenu = $('#mobile-menu');
+  const mobileMenuLinks = $$('.mobile-menu-link');
+  const themeToggleBtns = $$('.theme-toggle-btn');
+  const insightsBtn = $('#generate-insights-btn');
+  const publicationsGrid = $('#publications-grid');
+  const blogPostsContainer = $('#blog-posts-container');
+  const galleryGrid = $('#gallery-grid');
+  // === FIX: Use correct ID for chart canvas ===
+  const revenueChartCanvas = $('#revenueChartCanvas');
+  let revenueChartInstance = null; // To hold the chart instance
+  const currentYearSpan = $('#current-year');
+  
+  // Modal Elements
+  const modalContainer = $('#modal-container');
+  const modalBackdrop = $('#modal-backdrop');
+  const modalContentBox = $('#modal-content-box');
+  const modalTitle = $('#modal-title');
+  const modalArticleContent = $('#modal-article-content');
+  const modalCloseBtn = $('#modal-close-btn');
+  const modalImageBox = $('#modal-image-box');
+  const modalImageSrc = $('#modal-image-src');
+  const modalImageCloseBtn = $('#modal-image-close-btn');
+  const modalImagePrevBtn = $('#modal-image-prev-btn');
+  const modalImageNextBtn = $('#modal-image-next-btn');
 
-      // --- DOM refs
-      const generateInsightsBtn = document.getElementById("generate-insights-btn");
-      const insightsResultContainer = document.getElementById("insights-result-container");
-      const insightsLoading = document.getElementById("insights-loading");
-      const insightsContent = document.getElementById("insights-content");
-      const insightsError = document.getElementById("insights-error");
+  // Keystone Ledger Tab Elements
+  const ledgerTabsContainer = $('#ledger-tabs-container');
+  const ledgerContentContainer = $('#ledger-content-container');
+  
+  // Contact Form Elements
+  const contactForm = $('#contact-form');
+  const contactFormError = $('#contact-form-error');
+  
+  // Chatbot Elements
+  const chatWidgetToggle = $('#chat-widget-toggle');
+  const chatbotContainer = $('#chatbot-container');
+  const chatbotCloseBtn = $('#chatbot-close-btn');
+  const chatbotMessages = $('#chatbot-messages');
+  const chatbotForm = $('#chatbot-form');
+  const chatbotInput = $('#chatbot-input');
+  const chatbotSubmitBtn = $('#chatbot-submit-btn');
+  const chatbotSuggestions = $('#chatbot-suggestions');
 
-      const draftEmailBtn = document.getElementById("draft-email-btn");
-      const contactForm = document.getElementById("contact-form");
-      const contactError = document.getElementById("contact-error");
+  // --- Helper Functions ---
+  const toggleModal = (show = false) => {
+    modalContainer.classList.toggle('hidden', !show);
+  };
 
-      const emailModal = document.getElementById("email-modal");
-      const closeEmailModalBtn = document.getElementById("close-email-modal-btn");
-      const emailOutput = document.getElementById("email-output");
-      const copyEmailBtn = document.getElementById("copy-email-btn");
-      const copySuccessMsg = document.getElementById("copy-success-msg");
+  const showContentModal = (title, contentHtml) => {
+    modalTitle.textContent = title;
+    modalArticleContent.innerHTML = contentHtml;
+    modalContentBox.classList.remove('hidden');
+    modalImageBox.classList.add('hidden');
+    toggleModal(true);
+  };
+  
+  let currentGalleryIndex = 0;
+  const showImageModal = (index) => {
+    currentGalleryIndex = index;
+    const img = galleryData[index];
+    if (!img) return;
+    
+    modalImageSrc.src = img.src;
+    modalImageSrc.alt = img.alt;
+    modalContentBox.classList.add('hidden');
+    modalImageBox.classList.remove('hidden');
+    toggleModal(true);
+  };
+  
+  const showNextImage = () => {
+    const nextIndex = (currentGalleryIndex + 1) % galleryData.length;
+    showImageModal(nextIndex);
+  };
+  
+  const showPrevImage = () => {
+    const prevIndex = (currentGalleryIndex - 1 + galleryData.length) % galleryData.length;
+    showImageModal(prevIndex);
+  };
 
-      const publicationModal = document.getElementById("publication-modal");
-      const closePublicationModalBtn = document.getElementById("close-publication-modal-btn");
-      const publicationModalHeader = document.getElementById("publication-modal-header");
-      const publicationModalContent = document.getElementById("publication-modal-content");
-      const publicationsGrid = document.getElementById("publications-grid");
+  const closeModal = () => {
+    toggleModal(false);
+  };
 
-      const lightbox = document.getElementById("lightbox");
-      const lightboxImg = document.getElementById("lightbox-img");
-      const lightboxClose = document.getElementById("lightbox-close");
-      const lightboxPrev = document.getElementById("lightbox-prev");
-      const lightboxNext = document.getElementById("lightbox-next");
-      const galleryGrid = document.getElementById("gallery-grid");
+  // --- Core Logic ---
 
-      const blogPostsContainer = document.getElementById("blog-posts-container");
-      const blogErrorContainer = document.getElementById("blog-error-container");
-
-      // --- Modal helpers
-      const openModal = (el) => el && el.classList.remove('hidden');
-      const closeModal = (el) => el && el.classList.add('hidden');
-
-      if (closeEmailModalBtn) closeEmailModalBtn.addEventListener("click", () => closeModal(emailModal));
-      if (emailModal) emailModal.addEventListener("click", (e) => { if (e.target === emailModal) closeModal(emailModal); });
-
-      if (closePublicationModalBtn) closePublicationModalBtn.addEventListener("click", () => closeModal(publicationModal));
-      if (publicationModal) publicationModal.addEventListener("click", (e) => { if (e.target === publicationModal) closeModal(publicationModal); });
-
-      // --- Safe text
-      const safeText = (text) => {
-        const el = document.createElement('div');
-        el.textContent = text ?? "";
-        return el.textContent;
-      };
-
-      // --- Publications data (from your script)
-      const publicationsData = [
-        {
-          id: 'brc-feature',
-          title: '#FeatureFriday: Amit Mishra',
-          source: 'BRC Healthcare',
-          logo: 'https://i.postimg.cc/4xSWKYSF/IMG-4111.jpg',
-          imageUrl: 'https://lh3.googleusercontent.com/pw/AP1GczOt4vMotA4jJpp5s3kFeF2E8ZQu0AtFwUAyM0AHiJSw0n7hYSkmVUnz_WfRdyzyY-tVKcAaGA4xDg47j2ujKn3Gvf8NYab8hh_uZdnwjynC0YqvIOFO=w1920-h1080',
-          snippet: 'Meet Amit Mishra, Segue Recovery Coach, PRSS. A spotlight on his journey and work at BRC Healthcare.',
-          article: `<article><h3>#FeatureFriday: Amit Mishra</h3><p>Everyone meet Amit Mishra, Segue Recovery Coach, PRSS...</p><blockquote>"My family was unsure..."</blockquote><p>In 2016, Amit was intervened on...</p><blockquote>"There, I met mentors... I love my job..."</blockquote></article>`
-        },
-        {
-          id: 'nova-recovery',
-          title: 'Stories Of Addiction Recovery: Amit Mishra’s Story',
-          source: 'Nova Recovery Center',
-          logo: 'https://i.postimg.cc/mg5mcP5d/IMG-4113.jpg',
-          imageUrl: 'https://lh3.googleusercontent.com/pw/AP1GczMwGRjA3RLe7tpfdx9sZCrVcIFUS8jSuN_vD-tdeG1C9McXMx3JbGR63fxDNAnyTYD2Qmda_VJHfdkTqnL1-UtTd-GmTNmHR3euok-Op9ps4cNgWFSX=w1920-h1080',
-          snippet: 'Sharing the journey from addiction to recovery, highlighting the turning points and finding freedom.',
-          article: `<article><h3>Stories Of Addiction Recovery: Amit Mishra’s Story</h3><p>Amit grew up in a home...</p><blockquote>"I had several friends..."</blockquote><p>That chase led Amit straight...</p><blockquote>"I will never forget the feeling..."</blockquote><p>Drugs and alcohol had completely consumed...</p><blockquote>"In that moment, I really felt like I met God..."</blockquote><p>Somehow Amit survived...</p><blockquote>"Nova was different..."</blockquote><p>After completing his rehab at Nova...</p><blockquote>"There is absolutely a way out..."</blockquote></article>`
-        },
-        {
-          id: 'heart-water',
-          title: 'Amit Mishra\'s Story (#PourYourHeartOut)',
-          source: 'Heart Water',
-          logo: 'https://i.postimg.cc/T34tyK47/IMG-4114.jpg',
-          imageUrl: 'https://lh3.googleusercontent.com/pw/AP1GczMwGRjA3RLe7tpfdx9sZCrVcIFUS8jSuN_vD-tdeG1C9McXMx3JbGR63fxDNAnyTYD2Qmda_VJHfdkTqnL1-UtTd-GmTNmHR3euok-Op9ps4cNgWFSX?w=1920-h=1080',
-          snippet: 'Sharing a personal testimony about childhood, struggles with addiction, finding sobriety, and helping others.',
-          link: '#',
-          article: `<article><h3>Amit Mishra's Story (#PourYourHeartOut)</h3><blockquote>"Originally from Ann Arbor, MI..."</blockquote><p>I spent my childhood playing sports...</p><p>Gradually, my drug and alcohol use...</p><p>All of this was a result...</p><blockquote>"I've been sober everyday since..."</blockquote></article>`
-        },
-        {
-          id: 'voyage-la',
-          title: 'Check Out Amit Mishra’s Story',
-          source: 'VoyageLA',
-          logo: 'https://voyagela.com/wp-content/uploads/2021/02/cropped-VOYAGE-LA-MAGAZINE-LOGO-5.png',
-          imageUrl: 'https://lh3.googleusercontent.com/pw/AP1GczPERO1eniWQPw1Bmim0kRcE1P8JQ11HYae437im9jPfY-FGCiu-oZst_0lRRjp2_8e6Q_j1kV7dVOCql20d4UC8jT5h4QlltuOb4ydgrCIgkIwi2x7u=w1920-h1080',
-          snippet: 'An in-depth interview discussing my journey in the healthcare industry and vision for behavioral health.',
-          link: 'https://voyagela.com/interview/check-out-amit-mishras-story/',
-          article: `<article><h3>Check Out Amit Mishra’s Story</h3><p><strong>Amit, let’s start with your story...</strong><br/>My journey...</p><p>My career...</p><p><strong>Overall, has it been relatively smooth?...</strong><br/>The road...</p></article>`
-        }
-      ];
-
-      // --- Publications UI
-      const loadPublications = () => {
-        console.log("loadPublications");
-        const grid = publicationsGrid;
-        if (!grid) return;
-        grid.innerHTML = "";
-        publicationsData.forEach((item) => {
-          const card = document.createElement('div');
-          card.className = "bg-white dark:bg-gray-700 rounded-xl shadow-lg overflow-hidden flex flex-col cursor-pointer transition-all duration-300 hover:shadow-2xl hover:-translate-y-1 group";
-          card.innerHTML = `
-            <div class="h-48 w-full overflow-hidden relative">
-              <img src="${item.imageUrl}" alt="${safeText(item.title)}" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105" onerror="this.onerror=null; this.src='https://placehold.co/600x400/7F1D1D/FFFFFF?text=Load+Error';">
-            </div>
-            <div class="p-6 flex flex-col flex-grow">
-              <div class="flex items-center gap-3 mb-3">
-                <div class="flex-shrink-0 bg-white h-8 w-8 rounded-full flex items-center justify-center p-1 shadow-sm border dark:border-gray-600">
-                  <img class="max-h-full max-w-full object-contain" src="${item.logo}" alt="${safeText(item.source)} Logo" onerror="this.parentElement.style.display='none'">
-                </div>
-                <h4 class="text-sm font-semibold text-gray-600 dark:text-gray-400">${safeText(item.source)}</h4>
-              </div>
-              <h3 class="text-lg font-bold text-gray-800 dark:text-gray-200 mb-2 leading-tight">${safeText(item.title)}</h3>
-              <p class="text-gray-600 dark:text-gray-400 text-sm mb-4 flex-grow">${safeText(item.snippet)}</p>
-              <span class="text-blue-600 dark:text-blue-400 font-semibold inline-flex items-center text-sm group-hover:underline mt-auto">
-                Read Feature <i class="fas fa-arrow-right ml-1 text-xs"></i>
-              </span>
-            </div>
-          `;
-          card.addEventListener("click", () => {
-            if (publicationModalHeader) {
-              publicationModalHeader.innerHTML =
-                `<img src="${item.logo}" alt="${safeText(item.source)} Logo" class="h-8 max-h-8 max-w-[150px] object-contain flex-shrink-0" onerror="this.style.display='none'">
-                 <h2 id="publication-modal-title" class="text-xl font-bold text-gray-800 dark:text-gray-200">${safeText(item.source)}</h2>`;
-            }
-            if (publicationModalContent) {
-              publicationModalContent.innerHTML = item.article;
-            }
-            openModal(publicationModal);
-          });
-          grid.appendChild(card);
-        });
-      };
-
-      // --- Blog
-      const loadBlogPosts = async () => {
-        if (!blogPostsContainer) return;
-        const mediumRssFeed = "https://medium.com/feed/@roomservicebranding";
-        const proxyUrl = "https://api.rss2json.com/v1/api.json?rss_url=";
-        try {
-          const res = await fetch(proxyUrl + encodeURIComponent(mediumRssFeed));
-          if (!res.ok) throw new Error(`HTTP ${res.status}`);
-          const data = await res.json();
-          if (data.status !== 'ok') throw new Error('RSS status not ok');
-          const posts = data.items.slice(0, 3);
-          if (!posts.length) throw new Error('No posts found');
-          blogPostsContainer.innerHTML = "";
-          posts.forEach(post => {
-            const postDate = new Date(post.pubDate).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' });
-            const snippet = new DOMParser().parseFromString(post.description, 'text/html').body.textContent.slice(0, 100) + '...';
-            const card = document.createElement('a');
-            card.href = post.link;
-            card.target = "_blank";
-            card.rel = "noopener noreferrer";
-            card.className = "blog-card bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden flex flex-col group transition-all duration-300 hover:shadow-2xl hover:-translate-y-1";
-            card.innerHTML = `
-              <div class="h-48 w-full overflow-hidden">
-                <img src="${post.thumbnail}" alt="${safeText(post.title)}" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
-                     onerror="this.src='https://placehold.co/600x400/10B981/FFFFFF?text=Blog+Post'; this.onerror=null;"/>
-              </div>
-              <div class="p-6 flex flex-col flex-grow">
-                <p class="text-sm text-gray-500 dark:text-gray-400 mb-2">${safeText(postDate)}</p>
-                <h3 class="text-lg font-bold text-gray-800 dark:text-gray-200 mb-3 leading-tight">${safeText(post.title)}</h3>
-                <p class="text-sm text-gray-600 dark:text-gray-400 mb-4 flex-grow">${safeText(snippet)}</p>
-                <span class="text-blue-600 dark:text-blue-400 font-semibold inline-flex items-center text-sm group-hover:underline mt-auto">
-                  Read More <i class="fas fa-arrow-right ml-1 text-xs"></i>
-                </span>
-              </div>
-            `;
-            blogPostsContainer.appendChild(card);
-          });
-          console.log("Blog posts loaded.");
-        } catch (e) {
-          console.warn("Blog feed failed:", e);
-          blogPostsContainer.innerHTML = '';
-          if (blogErrorContainer) {
-            blogErrorContainer.innerHTML = `<p>Could not load blog posts. Please <a href="https://medium.com/@roomservicebranding" target="_blank" class="underline hover:text-blue-500">visit my Medium profile</a> directly.</p>`;
-          }
-        }
-      };
-
-      // --- Gallery & Lightbox
-      const fiverrLink = 'https://www.fiverr.com/s/qDLADq9';
-      const fiverrImageSrc = 'https://lh3.googleusercontent.com/pw/AP1GczPWTMZmzfJclDo_KBBWt9zfEPlHfGYJBGMn_3NNSZ_2bYu0vR4ZyjoUuZxtb_I0cCkoUfFwutxxY_qU3e_BspR2kHyt9Cj-CGIyLhqB7pMTlzygQS0O=w1920-h1080';
-
-      const galleryImages = [
-        { src: 'https://lh3.googleusercontent.com/pw/AP1GczOkap3k52m5ojG6FGwOHX55aIMxSJ2rP-Kgs5CUHz7tdRO_YaPgCjUw1Q3aH0VB9B-UWJylaDWG8oRZC-TN77lJ0tKVj3I1wivZHQiLL1n3EgkxO1LA=w1920-h1080' },
-        { src: 'https://lh3.googleusercontent.com/pw/AP1GczPERO1eniWQPw1Bmim0kRcE1P8JQ11HYae437im9jPfY-FGCiu-oZst_0lRRjp2_8e6Q_j1kV7dVOCql20d4UC8jT5h4QlltuOb4ydgrCIgkIwi2x7u=w1920-h1080' },
-        { src: 'https://lh3.googleusercontent.com/pw/AP1GczMwGRjA3RLe7tpfdx9sZCrVcIFUS8jSuN_vD-tdeG1C9McXMx3JbGR63fxDNAnyTYD2Qmda_VJHfdkTqnL1-UtTd-GmTNmHR3euok-Op9ps4cNgWFSX=w1920-h1080' },
-        { src: 'https://lh3.googleusercontent.com/pw/AP1GczOt4vMotA4jJpp5s3kFeF2E8ZQu0AtFwUAyM0AHiJSw0n7hYSkmVUnz_WfRdyzyY-tVKcAaGA4xDg47j2ujKn3Gvf8NYab8hh_uZdnwjynC0YqvIOFO=w1920-h1080' },
-        { src: 'https://lh3.googleusercontent.com/pw/AP1GczNGaHPsFiJCLJzQ5BrPpPTYqL6THYV6CKRcGIm1nU_OH958xKY0YSJtt5RUKOpHrmXbX3RbsdecQZsO30HiTMOFqvL5TDFpNESQPph5UN4ZzPIqHYaL=w1920-h1080' },
-        { src: 'https://lh3.googleusercontent.com/pw/AP1GczMu3e3iaz8PTuoYQg5kMktD3y0cCKwoUxLDUbjVSTQ2qZ7lY0GtumDhtDLK55LW8_ok5k06PvQa97lU9l_P-mmzzY1Akd-NapF5RZsxu55hun0Ppmij=w1920-h1080' },
-        { src: fiverrImageSrc, link: fiverrLink },
-        { src: 'https://lh3.googleusercontent.com/pw/AP1GczNvTV8ofgBpuRhh4cakJIxpEP2nIKR3Qx6HwB_YvUXyTSvfSEa3vAYoPtmCqnWsVD7nrf1uXqVn2nk37ntxmfbHN3ujq5NRQHAiOPrjL5upO8naJrhc=w1920-h1080' },
-        { src: 'https://lh3.googleusercontent.com/pw/AP1GczPaL3qF74teIOBUZTqoiBtXjOmfj0ygoZW1eJWkyQT4e-iPidEeogX_HCTxplsH2wDE5yzWIsu18CZTPjPurpxUvB8p8bLoeVn-AmBndoi5BGZT7_sj=w1920-h1080' },
-        { src: 'https://lh3.googleusercontent.com/pw/AP1GczNHZjIJ6qB4EivJNXb0z7rJx_WvF4gfnB2C0LDiwDF-qRPkHIRgyhwV9se5vGwej1pcEHY_NIG88Fzqf4P2cKzt8tVLBTQfLGbQmvkxroQlRriZD-pi=w1920-h1080' },
-        { src: 'https://lh3.googleusercontent.com/pw/AP1GczNcycEMQL0wPcnh-xJSbvh6tQSNUeUC70ULB2IFgePOVMrTaGBHRwRSyFsjWE31z1fhbmGfAWPag08__2uOe4oq_AP9OlNVZEY1MNZa31JEubHF71Tm=w1920-h1080' },
-        { src: 'https://lh3.googleusercontent.com/pw/AP1GczNCMzdbc4mP51UPKwLkl--FPB3EfTWSY-qbNtneftoYBwt64zEDmumBuirXAT3_nzQPoOyrIpgWn7Xo9-RB1hbZcdrGWko7MfeA4BLHgFXMm7iy16XO=w1920-h1080' },
-        { src: 'https://lh3.googleusercontent.com/pw/AP1GczM7fyR8bs7KKnM3-nNAfeljulwsri5Cn9Psp7K-8yxPoq_BPflRAj_alVoU5W1JgfIdvLWZMqSln2-tQ_AEwbJACIPk3iQWVtyqwXI--JL-cMUB3MmO=w1920-h1080' }
-      ];
-
-      let currentLightboxIndex = 0;
-      const lightboxImages = galleryImages.filter(item => !item.link);
-
-      const loadGallery = () => {
-        if (!galleryGrid) return;
-        galleryGrid.innerHTML = "";
-        let lbIndex = 0;
-        galleryImages.forEach((item, idx) => {
-          const container = document.createElement("div");
-          const img = document.createElement("img");
-          img.src = item.src;
-          img.alt = item.link ? "Fiverr Profile Link" : `Gallery image ${idx + 1}`;
-          img.className = "w-full h-64 object-cover rounded-lg transition-all duration-300 hover:scale-105 hover:shadow-lg";
-          img.loading = "lazy";
-          img.onerror = function(){ this.src='https://placehold.co/600x400/7F1D1D/FFFFFF?text=Load+Error'; this.onerror=null; };
-          if (item.link) {
-            const link = document.createElement("a");
-            link.href = item.link; link.target = "_blank"; link.rel = "noopener noreferrer"; link.title = "Visit my Fiverr Profile";
-            img.classList.add("cursor-pointer");
-            link.appendChild(img);
-            container.appendChild(link);
-          } else {
-            img.classList.add("cursor-pointer");
-            const thisIndex = lbIndex;
-            img.addEventListener("click", () => openLightbox(thisIndex));
-            container.appendChild(img);
-            lbIndex++;
-          }
-          galleryGrid.appendChild(container);
-        });
-      };
-
-      const showImage = (index) => {
-        if (index < 0 || index >= lightboxImages.length) return;
-        currentLightboxIndex = index;
-        if (lightboxImg) lightboxImg.src = lightboxImages[index].src;
-      };
-      const openLightbox = (index) => { showImage(index); openModal(lightbox); };
-      const closeLightbox = () => closeModal(lightbox);
-      const prevImage = () => showImage((currentLightboxIndex - 1 + lightboxImages.length) % lightboxImages.length);
-      const nextImage = () => showImage((currentLightboxIndex + 1) % lightboxImages.length);
-      if (lightboxClose) lightboxClose.addEventListener("click", (e) => { e.stopPropagation(); closeLightbox(); });
-      if (lightboxPrev) lightboxPrev.addEventListener("click", (e) => { e.stopPropagation(); prevImage(); });
-      if (lightboxNext) lightboxNext.addEventListener("click", (e) => { e.stopPropagation(); nextImage(); });
-      if (lightbox) lightbox.addEventListener("click", (e) => { if (e.target === lightbox) closeLightbox(); });
-      document.addEventListener('keydown', (e) => { if (!lightbox || lightbox.classList.contains('hidden')) return; if (e.key === 'Escape') closeLightbox(); if (e.key === 'ArrowLeft') prevImage(); if (e.key === 'ArrowRight') nextImage(); });
-
-      // --- Chart.js (graceful)
-      let revenueChartInstance = null;
-      window.createRevenueChart = () => {
-        const ctx = document.getElementById('revenueChart');
-        if (!ctx) return;
-
-        if (typeof window.Chart === 'undefined') {
-          // No Chart available — show a friendly placeholder
-          const holder = ctx.parentElement;
-          if (holder && !holder.querySelector('.chart-placeholder')) {
-            holder.innerHTML = `
-              <div class="p-6 text-center text-gray-600 dark:text-gray-400 chart-placeholder">
-                <p class="font-semibold">Revenue Growth (2023-2024)</p>
-                <p class="mt-2 text-sm opacity-80">Chart preview unavailable in this environment.</p>
-              </div>
-            `;
-          }
-          return;
-        }
-
-        const isDarkMode = document.documentElement.classList.contains('dark');
-        const gridColor = isDarkMode ? 'rgba(255, 255, 255, 0.1)' : 'rgba(0, 0, 0, 0.1)';
-        const labelColor = isDarkMode ? '#cbd5e1' : '#4b5563';
-
-        const chartData = {
-          labels: ['Q1 2023', 'Q2 2023', 'Q3 2023', 'Q4 2023', 'Q1 2024', 'Q2 2024'],
-          datasets: [{
-            label: 'Revenue (Millions)',
-            data: [1.2, 1.9, 2.3, 2.1, 2.7, 3.4],
-            borderColor: '#3b82f6',
-            backgroundColor: 'rgba(59, 130, 246, 0.2)',
-            fill: true,
-            tension: 0.4,
-          }]
-        };
-
-        if (revenueChartInstance) revenueChartInstance.destroy();
-        revenueChartInstance = new window.Chart(ctx, {
-          type: 'line',
-          data: chartData,
-          options: {
-            responsive: true,
-            maintainAspectRatio: true,
-            plugins: {
-              legend: { labels: { color: labelColor } },
-              title: { display: true, text: 'Revenue Growth (2023-2024)', color: labelColor, font: { size: 16 } }
-            },
-            scales: {
-              y: { beginAtZero: true, grid: { color: gridColor }, ticks: { color: labelColor, callback: (v) => `$${v}M` } },
-              x: { grid: { color: 'transparent' }, ticks: { color: labelColor } }
-            }
-          }
-        });
-        console.log("Chart created/updated.");
-      };
-      // Initial chart render
-      window.createRevenueChart();
-
-      // --- AI button behavior (modal “coming soon”)
-      const AI_OFFLINE_TITLE = "AI feature temporarily offline";
-      const AI_OFFLINE_MESSAGE = "This AI-powered feature is temporarily offline while we transition to a new backend. Please check back soon.";
-
-      const showAiOfflineModal = () => {
-        if (!emailModal) return;
-        // Update modal title text
-        const titleEl = emailModal.querySelector('h3');
-        if (titleEl) titleEl.textContent = AI_OFFLINE_TITLE;
-        // Put message in the textarea and make it selectable (so “Copy” still works if you want)
-        if (emailOutput) {
-          emailOutput.value = AI_OFFLINE_MESSAGE;
-          emailOutput.readOnly = true;
-        }
-        // Keep copy button active (or disable if you prefer)
-        if (copySuccessMsg) copySuccessMsg.textContent = "";
-        openModal(emailModal);
-      };
-
-      if (generateInsightsBtn) {
-        generateInsightsBtn.addEventListener("click", (e) => {
-          // Show the container so user sees where insights would appear
-          if (insightsResultContainer) insightsResultContainer.classList.remove('hidden');
-          if (insightsLoading) insightsLoading.classList.add('hidden');
-          if (insightsContent) insightsContent.innerHTML = "";
-          if (insightsError) insightsError.innerHTML = "";
-          // Pop the modal
-          showAiOfflineModal();
-        });
-      }
-
-      if (contactForm) {
-        contactForm.addEventListener("submit", (e) => {
-          e.preventDefault();
-          if (contactError) contactError.textContent = '';
-          showAiOfflineModal();
-        });
-      }
-
-      // --- Copy Button Logic (for the AI offline modal) ---
-      if (copyEmailBtn) {
-        copyEmailBtn.addEventListener('click', () => {
-          if (emailOutput) {
-            emailOutput.select();
-            try {
-              // Use execCommand as a fallback for iframe environments
-              document.execCommand('copy');
-              if(copySuccessMsg) copySuccessMsg.textContent = "Copied!";
-              setTimeout(() => {
-                if(copySuccessMsg) copySuccessMsg.textContent = "";
-              }, 2000);
-            } catch (err) {
-              console.error('Failed to copy text: ', err);
-              if(copySuccessMsg) copySuccessMsg.textContent = "Copy failed";
-            }
-          }
-        });
-      }
-
-      // --- Initial loads
-      loadPublications();
-      loadGallery();
-      await loadBlogPosts();
-
-      console.log("SCRIPT 2 (no-AI): finished");
+  // 1. Theme Toggler
+  const updateTheme = (isDark) => {
+    htmlEl.classList.toggle('dark', isDark);
+    localStorage.setItem('theme', isDark ? 'true' : 'false');
+    const iconClass = isDark ? 'fa-sun' : 'fa-moon';
+    themeToggleBtns.forEach(btn => {
+      btn.innerHTML = `<i class="fas ${iconClass} text-xl"></i>`;
     });
-  </script>
+    
+    // Re-render chart on theme change
+    initRevenueChart();
+  };
+
+  themeToggleBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const isDark = !htmlEl.classList.contains('dark');
+      updateTheme(isDark);
+    });
+  });
+
+  // 2. Mobile Menu
+  mobileMenuToggle.addEventListener('click', () => {
+    const isExpanded = mobileMenuToggle.getAttribute('aria-expanded') === 'true';
+    mobileMenuToggle.setAttribute('aria-expanded', !isExpanded);
+    mobileMenu.classList.toggle('translate-x-full');
+    mobileMenuToggle.innerHTML = !isExpanded ? '<i class="fas fa-times text-2xl"></i>' : '<i class="fas fa-bars text-2xl"></i>';
+  });
+
+  mobileMenuLinks.forEach(link => {
+    link.addEventListener('click', () => {
+      mobileMenuToggle.setAttribute('aria-expanded', 'false');
+      mobileMenu.classList.add('translate-x-full');
+      mobileMenuToggle.innerHTML = '<i class="fas fa-bars text-2xl"></i>';
+    });
+  });
+
+  // 3. Navbar Scroll Effect
+  const handleNavScroll = () => {
+    if (window.scrollY > 50) {
+      navbar.classList.add('bg-white', 'dark:bg-gray-800', 'shadow-lg');
+      navbar.classList.remove('bg-transparent');
+    } else {
+      navbar.classList.remove('bg-white', 'dark:bg-gray-800', 'shadow-lg');
+      navbar.classList.add('bg-transparent');
+    }
+  };
+  window.addEventListener('scroll', handleNavScroll);
+
+  // 4. "Coming Soon" Modal for Insights
+  insightsBtn.addEventListener('click', () => {
+    showContentModal('Insights Coming Soon!', `
+      <h3 class="text-3xl font-bold mb-4">✨ Insights Coming Soon!</h3>
+      <p class="text-lg">This feature is currently under development.</p>
+      <p>It will soon use AI to generate and display the latest trends and insights in the behavioral healthcare industry. Check back soon!</p>
+    `);
+  });
+
+  // 5. Load Publications
+  const loadPublications = () => {
+    if (!publicationsGrid) return;
+    publicationsGrid.innerHTML = ''; // Clear skeletons
+    publicationsData.forEach((pub, index) => {
+      const card = document.createElement('div');
+      card.className = 'bg-white dark:bg-gray-700 rounded-xl shadow-lg overflow-hidden flex flex-col cursor-pointer hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group';
+      card.setAttribute('data-aos', 'fade-up');
+      card.setAttribute('data-aos-delay', index * 100);
+      card.innerHTML = `
+        <div class="block h-48 overflow-hidden">
+          <!-- === FIX: Added object-top === -->
+          <img src="${pub.thumbnail}" alt="${pub.publicationName}" class="w-full h-full object-cover object-top transition-transform duration-300 group-hover:scale-110">
+        </div>
+        <div class="p-6 flex flex-col flex-grow">
+          <div class="flex items-center gap-3 mb-3">
+              <div class="flex-shrink-0 bg-white h-10 w-10 rounded-full flex items-center justify-center p-1 shadow-sm">
+                  <img class="max-h-full max-w-full object-contain" src="${pub.logo}" alt="${pub.publicationName} logo" />
+              </div>
+              <h3 class="text-xl font-bold text-gray-800 dark:text-gray-200">
+                  ${pub.publicationName}
+              </h3>
+          </div>
+          <p class="text-gray-600 dark:text-gray-400 mb-4 flex-grow">${pub.description}</p>
+          <span class="mt-auto font-semibold text-blue-600 dark:text-blue-400">Read The Feature &rarr;</span>
+        </div>
+      `;
+      card.addEventListener('click', () => showContentModal(pub.publicationName, pub.article));
+      publicationsGrid.appendChild(card);
+    });
+  };
+
+  // 6. Load Blog Posts (Static)
+  const loadBlogPosts = () => {
+    if (!blogPostsContainer) return;
+    blogPostsContainer.innerHTML = ''; // Clear skeletons
+    
+    if (blogData.length === 0) {
+      blogPostsContainer.innerHTML = '<p class="text-gray-600 dark:text-gray-400 col-span-3 text-center">No blog posts available at this time.</p>';
+      return;
+    }
+    
+    blogData.forEach((post, index) => {
+      const card = document.createElement('a');
+      card.href = post.link;
+      card.target = '_blank';
+      card.rel = 'noopener noreferrer';
+      card.className = 'bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden flex flex-col hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group';
+      card.setAttribute('data-aos', 'fade-up');
+      card.setAttribute('data-aos-delay', index * 100);
+      card.innerHTML = `
+        <div class="block h-48 overflow-hidden">
+          <!-- === FIX: Added object-top === -->
+          <img src="${post.thumbnail}" alt="${post.title}" class="w-full h-full object-cover object-top transition-transform duration-300 group-hover:scale-110">
+        </div>
+        <div class="p-6 flex flex-col flex-grow">
+          <p class="text-sm text-gray-500 dark:text-gray-400 mb-2">${post.date}</p>
+          <h3 class="text-xl font-bold text-gray-800 dark:text-gray-200 mb-3 flex-grow">${post.title}</h3>
+          <p class="text-gray-600 dark:text-gray-400 mb-4">${post.snippet}</p>
+          <span class="mt-2 font-semibold text-blue-600 dark:text-blue-400">Read on Medium &rarr;</span>
+        </div>
+      `;
+      blogPostsContainer.appendChild(card);
+    });
+  };
+
+  // 7. Load Gallery
+  const loadGallery = () => {
+    if (!galleryGrid) return;
+    galleryGrid.innerHTML = ''; // Clear skeletons
+    galleryData.forEach((img, index) => {
+      const item = document.createElement('div');
+      item.className = 'w-full h-64 bg-gray-300 dark:bg-gray-700 rounded-lg overflow-hidden cursor-pointer group';
+      item.setAttribute('data-aos', 'zoom-in');
+      item.setAttribute('data-aos-delay', index * 50);
+      item.innerHTML = `
+        <!-- === FIX: Added object-top === -->
+        <img src="${img.src}" alt="${img.alt}" class="w-full h-full object-cover object-top group-hover:scale-110 transition-transform duration-300" onerror="this.src='https://placehold.co/600x600/EF4444/FFFFFF?text=Image+Error'; this.classList.add('object-contain');">
+      `;
+      item.addEventListener('click', () => showImageModal(index));
+      galleryGrid.appendChild(item);
+    });
+  };
+
+  // 8. Initialize Revenue Chart
+  const initRevenueChart = () => {
+    // === FIX: Check for canvas context properly ===
+    if (!revenueChartCanvas) {
+      console.warn("Revenue chart canvas not found.");
+      return;
+    }
+    const ctx = revenueChartCanvas.getContext('2d');
+    if (!ctx) {
+      console.error("Failed to get 2D context from revenue chart canvas.");
+      return;
+    }
+    
+    // Destroy previous chart instance if it exists
+    if (revenueChartInstance) {
+      revenueChartInstance.destroy();
+    }
+    
+    const isDark = htmlEl.classList.contains('dark');
+    const gridColor = isDark ? 'rgba(107, 114, 128, 0.3)' : 'rgba(209, 213, 219, 0.3)';
+    const labelColor = isDark ? '#d1d5db' : '#374151';
+
+    const gradient = ctx.createLinearGradient(0, 0, 0, 400);
+    gradient.addColorStop(0, 'rgba(59, 130, 246, 0.3)');
+    gradient.addColorStop(1, 'rgba(59, 130, 246, 0)');
+
+    revenueChartInstance = new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: ['Q1 22', 'Q2 22', 'Q3 22', 'Q4 22', 'Q1 23', 'Q2 23', 'Q3 23', 'Q4 23'],
+        datasets: [{
+          label: 'Monthly Revenue ($K)',
+          data: [450, 520, 580, 640, 680, 720, 750, 780],
+          borderColor: '#3b82f6',
+          backgroundColor: gradient,
+          borderWidth: 3,
+          fill: true,
+          tension: 0.4,
+          pointBackgroundColor: '#3b82f6',
+          pointRadius: 5,
+          pointHoverRadius: 7
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: true,
+        plugins: {
+          legend: { display: false },
+          tooltip: {
+            backgroundColor: isDark ? '#1f2937' : '#ffffff',
+            titleColor: isDark ? '#f3f4f6' : '#1f2937',
+            bodyColor: isDark ? '#d1d5db' : '#374151',
+            borderColor: isDark ? '#374151' : '#e5e7eb',
+            borderWidth: 1,
+          }
+        },
+        scales: {
+          y: {
+            beginAtZero: false,
+            min: 400,
+            grid: { color: gridColor },
+            ticks: { color: labelColor, font: { weight: '600' }, callback: (value) => '$' + value + 'K' }
+          },
+          x: {
+            grid: { display: false },
+            ticks: { color: labelColor, font: { weight: '600' } }
+          }
+        }
+      }
+    });
+  };
+
+  // 9. Set Current Year in Footer
+  if (currentYearSpan) {
+    currentYearSpan.textContent = new Date().getFullYear();
+  }
+
+  // 10. Modal Close Handlers
+  modalBackdrop.addEventListener('click', closeModal);
+  modalCloseBtn.addEventListener('click', closeModal);
+  modalImageCloseBtn.addEventListener('click', closeModal);
+  modalImagePrevBtn.addEventListener('click', showPrevImage);
+  modalImageNextBtn.addEventListener('click', showNextImage);
+  
+  // 11. Keystone Ledger Tab Logic
+  if (ledgerTabsContainer && ledgerContentContainer) {
+    // Set initial content
+    ledgerContentContainer.innerHTML = ledgerContent['Executive Dashboard'];
+    
+    ledgerTabs.forEach((tabName, index) => {
+      const tabButton = document.createElement('button');
+      tabButton.textContent = tabName;
+      tabButton.className = `ledger-tab-btn px-4 py-2 text-sm font-semibold rounded-md transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#4A6741] dark:focus:ring-offset-gray-800 ${
+        index === 0
+          ? 'bg-[#4A6741] text-white'
+          : 'text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700'
+      }`;
+      
+      tabButton.addEventListener('click', () => {
+        // Update button styles
+        $$('.ledger-tab-btn').forEach(btn => {
+          btn.classList.remove('bg-[#4A6741]', 'text-white');
+          btn.classList.add('text-gray-600', 'dark:text-gray-300', 'hover:bg-gray-100', 'dark:hover:bg-gray-700');
+        });
+        tabButton.classList.add('bg-[#4A6741]', 'text-white');
+        tabButton.classList.remove('text-gray-600', 'dark:text-gray-300', 'hover:bg-gray-100', 'dark:hover:bg-gray-700');
+        
+        // Update content
+        ledgerContentContainer.innerHTML = ledgerContent[tabName] || '<p>Content not found.</p>';
+      });
+      
+      ledgerTabsContainer.appendChild(tabButton);
+    });
+  }
+
+  // 12. Contact Form "AI-Assist" (Mailto) Logic
+  if (contactForm) {
+    contactForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      contactFormError.textContent = '';
+      
+      const name = $('#user-name').value;
+      const company = $('#user-company').value;
+      const purpose = $('#user-purpose').value;
+      
+      if (!name || !purpose) {
+        contactFormError.textContent = 'Please fill out Your Name and Purpose of Message.';
+        return;
+      }
+      
+      const subject = encodeURIComponent(`Connection Request: ${purpose}`);
+      const body = encodeURIComponent(
+`Hi Amit,
+
+My name is ${name}${company ? ` from ${company}` : ''}.
+
+I was impressed by your portfolio and wanted to reach out regarding: ${purpose}.
+
+I'd be interested in discussing this further.
+
+Best,
+${name}
+`
+      );
+      
+      // Open mail client
+      window.location.href = `mailto:amitmishra@consultant.com?subject=${subject}&body=${body}`;
+    });
+  }
+  
+  // 13. AI Chatbot Logic
+  // Mock AI response function
+  const getAIResponse = (message) => {
+    message = message.toLowerCase();
+    let responseText = "I'm not sure I understand. Can you rephrase? You can ask about Amit's expertise, achievements, or ask to schedule a meeting.";
+    
+    if (message.includes("hello") || message.includes("hi")) {
+      responseText = "Hi there! How can I help you today?";
+    } else if (message.includes("expert") || message.includes("skills")) {
+      responseText = "Amit is an expert in Business Development, Utilization Review (UR), Revenue Cycle Optimization, and building Referral Networks, especially for high-net-worth clients.";
+    } else if (message.includes("achieve") || message.includes("results")) {
+      responseText = "Amit generated over $700,000 in monthly revenue for 8 consecutive quarters and was named Employee of the Year 2023.";
+    } else if (message.includes("meeting") || message.includes("schedule") || message.includes("contact")) {
+      responseText = "The best way to schedule a meeting or contact Amit directly is by using the AI-Assisted Outreach form in the 'Let's Build the Future' section, or by emailing him at amitmishra@consultant.com.";
+    }
+    
+    return responseText;
+  };
+  
+  // Function to add a message to the chat
+  const addChatMessage = (role, text) => {
+    const messageDiv = document.createElement('div');
+    messageDiv.className = `flex ${role === 'user' ? 'justify-end' : 'justify-start'}`;
+    
+    const bubble = document.createElement('div');
+    bubble.className = `max-w-[80%] p-3 rounded-xl text-sm whitespace-pre-wrap ${role === 'user' ? 'chat-bubble-user' : 'chat-bubble-model'}`;
+    bubble.textContent = text;
+    
+    messageDiv.appendChild(bubble);
+    chatbotMessages.appendChild(messageDiv);
+    // Scroll to bottom
+    chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+  };
+  
+  // Toggle chatbot visibility
+  chatWidgetToggle.addEventListener('click', () => {
+    chatbotContainer.classList.remove('hidden');
+    chatWidgetToggle.classList.add('hidden');
+  });
+  
+  chatbotCloseBtn.addEventListener('click', () => {
+    chatbotContainer.classList.add('hidden');
+    chatWidgetToggle.classList.remove('hidden');
+  });
+  
+  // Handle suggestion clicks
+  $$('.chatbot-suggestion-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const suggestionText = btn.textContent;
+      addChatMessage('user', suggestionText);
+      chatbotSuggestions.classList.add('hidden');
+      
+      // Show loading
+      const loadingBubble = document.createElement('div');
+      loadingBubble.className = 'flex justify-start';
+      loadingBubble.innerHTML = `
+        <div class="max-w-[80%] p-3 rounded-xl chat-bubble-model">
+          <div class="flex items-center gap-2">
+            <div class="w-2 h-2 bg-gray-500 rounded-full animate-bounce [animation-delay:-0.3s]"></div>
+            <div class="w-2 h-2 bg-gray-500 rounded-full animate-bounce [animation-delay:-0.15s]"></div>
+            <div class="w-2 h-2 bg-gray-500 rounded-full animate-bounce"></div>
+          </div>
+        </div>`;
+      chatbotMessages.appendChild(loadingBubble);
+      chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+      
+      // Get response
+      setTimeout(() => {
+        chatbotMessages.removeChild(loadingBubble); // Remove loading
+        const aiResponse = getAIResponse(suggestionText);
+        addChatMessage('model', aiResponse);
+      }, 1000);
+    });
+  });
+  
+  // Handle form submission
+  chatbotForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const userInput = chatbotInput.value.trim();
+    if (!userInput) return;
+    
+    addChatMessage('user', userInput);
+    chatbotInput.value = '';
+    chatbotSuggestions.classList.add('hidden');
+    
+    // Show loading
+    const loadingBubble = document.createElement('div');
+    loadingBubble.className = 'flex justify-start';
+    loadingBubble.id = 'loading-bubble';
+    loadingBubble.innerHTML = `
+      <div class="max-w-[80%] p-3 rounded-xl chat-bubble-model">
+        <div class="flex items-center gap-2">
+          <div class="w-2 h-2 bg-gray-500 rounded-full animate-bounce [animation-delay:-0.3s]"></div>
+          <div class="w-2 h-2 bg-gray-500 rounded-full animate-bounce [animation-delay:-0.15s]"></div>
+          <div class="w-2 h-2 bg-gray-500 rounded-full animate-bounce"></div>
+        </div>
+      </div>`;
+    chatbotMessages.appendChild(loadingBubble);
+    chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+    
+    // Get response
+    setTimeout(() => {
+      $('#loading-bubble')?.remove(); // Remove loading
+      const aiResponse = getAIResponse(userInput);
+      addChatMessage('model', aiResponse);
+    }, 1000);
+  });
+  
+
+  // --- Run Initialization Functions ---
+  try {
+    // Set initial theme icon
+    updateTheme(htmlEl.classList.contains('dark'));
+    
+    // Load dynamic content
+    loadPublications();
+    loadBlogPosts();
+    loadGallery();
+    initRevenueChart(); // Chart is now initialized *after* theme is set
+    
+    // Handle nav scroll on load
+    handleNavScroll();
+
+  } catch (error) {
+    console.error("Error during site initialization:", error);
+  }
+
+});
+</script>
+
 </body>
 </html>
 
